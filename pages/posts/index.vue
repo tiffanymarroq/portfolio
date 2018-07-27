@@ -5,15 +5,10 @@
 </template>
 
 <script>
-import PostList from '@/components/Posts/PostList';
 
 export default {
-    components: {
-        PostList
-    },
-    // created(){
-    //     this.$store.dispatch('setPosts',this.loadedPosts)
-    //  },
+
+
     computed: {
        loadedPosts() {
         return this.$store.getters.loadedPosts
