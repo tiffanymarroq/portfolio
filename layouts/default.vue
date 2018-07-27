@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <TheHeader @sidenavToggle="displaySidenav = !displaySidenav"/>
+    <TheSideNav
+        :show="displaySidenav"
+        @close="displaySidenav = false" />
+    <nuxt/>
+  </div>
+</template>
+
+<script>
+  import TheHeader from '@/components/Navigation/TheHeader'
+  import TheSideNav from '@/components/Navigation/TheSideNav'
+  
+
+export default {
+  data() {
+    return {
+      displaySidenav: false
+    }
+  },
+  components:{
+    TheHeader,
+    TheSideNav
+  }
+}
+</script>
+
+
+<style>
+  html{
+    font-family: 'Open Sans', sans-serif
+  }
+  body{
+    margin: 0;
+  }
+</style>
