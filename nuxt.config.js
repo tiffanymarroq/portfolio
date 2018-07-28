@@ -67,12 +67,16 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://blog-86697.firebaseio.com'
+    baseUrl: process.env.BASE_URL || 'https://blog-86697.firebaseio.com',
+    fbAPIKey: "AIzaSyAieg56KF2k90NZgve51Bwnob_GhmMIG_Q"
   },
   transition: {
     name: 'fade',
     mode: 'out-in'
   },
+  // router: {
+  //   middleware: 'log'
+  // }
 
   
 }

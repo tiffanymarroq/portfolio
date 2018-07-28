@@ -22,7 +22,8 @@ export default {
   components:{
     TheHeader,
     TheSideNav
-  }
+  },
+  // middleware: 'log',
 }
 </script>
 
