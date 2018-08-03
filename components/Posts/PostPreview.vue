@@ -40,14 +40,12 @@ export default {
       postLink() {
         return this.isAdmin ? '/admin/' + this.id : '/posts/' + this.id;
       }
-    }
+    },
+
 }
 </script>
 
 <style scoped>
-
-
-
 .post-preview {
   border: 1px solid #ccc;
   box-shadow: 0 2px 2px #ccc;

@@ -1,3 +1,3 @@
 export default function (context) {
-    console.log('Middleware is running')
+    console.log('Middleware is running');
 }

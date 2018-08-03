@@ -26,7 +26,7 @@ export default {
             )
             .then(data => {
                 return {
-                    loadedPost: { ...data, id: context.params.postId }
+                    loadedPost: { ...data, id: context.params.id }
                 };
             })
             .catch( e => context.error());
