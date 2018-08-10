@@ -122,12 +122,11 @@ const createStore = () => {
                         .split(';')
                         .find( c => c.trim().startsWith('expirationDate='))
                         .split('=')[1];
-                }else{
+                }else if(process.client ){
                      token = localStorage.getItem('token');
                      expirationDate = localStorage.getItem('tokenExpiration');
                     
                 }
-                console.log(new Date().getTime(), +expirationDate);
                 if( new Date().getTime() > +expirationDate || !token){
                     vuexContext.dispatch('logout');
                     console.log('no token')
