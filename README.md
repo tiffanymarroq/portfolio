@@ -1,6 +1,5 @@
-# nuxt-1
-
-> My bee&#39;s knees Nuxt.js project
+# Blog Template
+> My custom blog template
 
 ## Build Setup
 
