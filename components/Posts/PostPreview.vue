@@ -39,11 +39,10 @@ export default {
     },
     computed: {
       postLink() {
-        console.log( this.title.split(' ').join('-').toLowerCase() + ' post preview');
-        return this.isAdmin ? 'admin-postID' : 'posts-postTitle';
+        return this.isAdmin ? 'admin-postTitle' : 'posts-postTitle';
       },
       convertTitle(){
-        return this.title.split(' ').join('-').toLowerCase()
+        return this.title.split(' ').join('-').toLowerCase();
       }
     },
 

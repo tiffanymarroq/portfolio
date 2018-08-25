@@ -1,7 +1,7 @@
 const pkg = require('./package')
 const bodyParser = require('body-parser')
 const axios = require('axios')
-
+const key = require('./keys')
 module.exports = {
   mode: 'universal',
 
@@ -70,7 +70,7 @@ module.exports = {
   },
   env: {
     baseUrl: process.env.BASE_URL || 'https://blog-86697.firebaseio.com',
-    fbAPIKey: "AIzaSyAieg56KF2k90NZgve51Bwnob_GhmMIG_Q"
+    fbAPIKey: key.keyAPI
   },
   transition: {
     name: 'fade',
