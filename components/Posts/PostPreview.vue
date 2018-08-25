@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link :to="postLink" class="post-preview">
+<nuxt-link :to="{name: postLink, params:{ postID: id, postTitle: convertTitle }}"  class="post-preview">
     <article>
       <div 
         class="post-thumbnail" 
@@ -7,6 +7,7 @@
       <div class="post-content">
         <h1>{{title}}</h1>
         <p>{{previewText}}</p>
+        <p>{{id}}</p>
       </div>
     </article>
   </nuxt-link>
@@ -38,7 +39,11 @@ export default {
     },
     computed: {
       postLink() {
-        return this.isAdmin ? '/admin/' + this.id : '/posts/' + this.id;
+        console.log( this.title.split(' ').join('-').toLowerCase() + ' post preview');
+        return this.isAdmin ? 'admin-postID' : 'posts-postTitle';
+      },
+      convertTitle(){
+        return this.title.split(' ').join('-').toLowerCase()
       }
     },
 

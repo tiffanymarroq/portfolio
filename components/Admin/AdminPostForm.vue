@@ -7,6 +7,9 @@
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 
                 <AppButton type="submit">Save</AppButton>
+                
+                <AppButton type="button" @click.prevent="deletePost" style="margin-left: 10px">Delete</AppButton>
+                
                 <AppButton type="button" style="margin-left: 10px" btn-style="cancel" @click="onCancel">Cancel</AppButton>
     </form>
 </template>
@@ -31,6 +34,14 @@ export default {
         onSave() {
             //Save Posts
             this.$emit('submit', this.editedPost)
+        },
+        deletePost(){
+            console.log(this.editedPost.title)
+            if(this.editedPost.id != null){
+                console.log('not null');
+            }else{
+                console.log('its null')
+            }
         },
         onCancel(){
             //navigate back

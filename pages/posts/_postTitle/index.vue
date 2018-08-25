@@ -10,28 +10,33 @@
         </section>
         <section class="post-feedback">
             <p>Let me know what you think</p>
+            <p>{{postid}}</p>
         </section>
     </div>
 </template>
 <script>
 export default {
-  asyncData(context) {
+  props: {
+    postid: String
+  },
+  asyncData(context) { 
     if(context.payload){
       return {
         loadedPost: context.payload.postData
       }
     }
-    return context.app.$axios.$get('/posts/' + context.params.id +'.json')
+    return context.app.$axios.$get(
+      '/posts/' +
+      context.params.postID +
+      '.json')
     .then( data => {
-    console.log(context.params.id);
-      
       return {
-        
         loadedPost: data
       }
     })
     .catch( e => context.error(e))
   },
+
   head: {
     title: 'blog'
   }

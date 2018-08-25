@@ -21,12 +21,12 @@ export default {
        return context.app.$axios
             .$get(
                 "/posts/" +
-                context.params.postId +
+                context.params.postID +
                 ".json"
             )
             .then(data => {
                 return {
-                    loadedPost: { ...data, id: context.params.id }
+                    loadedPost: { ...data, id: context.params.postID }
                 };
             })
             .catch( e => context.error());
