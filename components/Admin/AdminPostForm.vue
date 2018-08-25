@@ -38,7 +38,7 @@ export default {
             //Save Posts
             this.$emit('submit', this.editedPost)
         },
-        deletePost(){           
+        deletePost(){          
             this.$store.dispatch('deletePost', this.editedPost)
             .then(() => {
                 this.$router.push("/admin");

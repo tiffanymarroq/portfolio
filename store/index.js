@@ -19,14 +19,14 @@ const createStore = () => {
                     post => post.id === editedPost.id
                 );
                 state.loadedPosts[postIndex] = editedPost;
+                console.log('edit')
+                console.log(editedPost)
             },
-            deletePost(state, post){
+            deletePost(state, editedPost){
                 const postIndex = state.loadedPosts.findIndex(
                     post => post.id === editedPost.id
                 );
-                state.loadedPosts.splice(postIndex, 1);
-                console.log(state.loadedPosts + ' state vuex');
-                
+                state.loadedPosts.splice(postIndex, 1);              
             },
             setToken(state, token){
                 state.token = token;
