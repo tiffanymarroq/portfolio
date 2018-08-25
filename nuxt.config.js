@@ -53,7 +53,7 @@ module.exports = {
     '@nuxtjs/axios',
   ],
   axios :{
-    baseURL:  process.env.BASE_URL || 'https://blog-86697.firebaseio.com',
+    baseURL:  process.env.BASE_URL || key.databaseURL,
     creditials: false
   },
 
@@ -69,8 +69,9 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://blog-86697.firebaseio.com',
-    fbAPIKey: key.keyAPI
+    baseUrl: process.env.BASE_URL || key.databaseURL,
+    fbAPIKey: key.apiKey,
+    databaseURL: key.databaseURL
   },
   transition: {
     name: 'fade',
@@ -82,7 +83,7 @@ module.exports = {
   ],
   generate: {
     routes: function() {
-     return axios.get('https://blog-86697.firebaseio.com/posts.json')
+     return axios.get(databaseURL+'/posts.json')
       .then(res => {
         const routes = []
         for(const key in res.data){

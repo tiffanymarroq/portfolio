@@ -45,8 +45,9 @@ const createStore = () => {
                     updatedDate: new Date()
                 }
                 return this.$axios
-                .$post('https://blog-86697.firebaseio.com/posts.json?auth=' + vuexContext.state.token, createdPost)
+                .$post(process.env.databaseURL + '/posts.json?auth=' + vuexContext.state.token, createdPost)
                 .then(data => {
+                    console.log(process.env.databaseURL + ' add')
                     vuexContext.commit('addPost', {...createdPost, id: data.name})
                     this.$router.push('/admin')
                 })
@@ -54,7 +55,7 @@ const createStore = () => {
                 
             },
             editPost(vuexContext, editedPost){
-                return this.$axios.$put('https://blog-86697.firebaseio.com/posts/' +
+                return this.$axios.$put(process.env.databaseURL + '/posts/' +
                 editedPost.id +
                 '.json?auth=' + vuexContext.state.token, editedPost)
                 .then(res => {
