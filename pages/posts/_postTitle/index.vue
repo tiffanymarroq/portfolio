@@ -10,15 +10,12 @@
         </section>
         <section class="post-feedback">
             <p>Let me know what you think</p>
-            <p>{{postid}}</p>
         </section>
     </div>
 </template>
 <script>
 export default {
-  props: {
-    postid: String
-  },
+
   asyncData(context) { 
     if(context.payload){
       return {

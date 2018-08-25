@@ -5,11 +5,8 @@
                 <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
-                
                 <AppButton type="submit">Save</AppButton>
-                
                 <AppButton type="button" @click.prevent="deletePost" style="margin-left: 10px">Delete</AppButton>
-                
                 <AppButton type="button" style="margin-left: 10px" btn-style="cancel" @click="onCancel">Cancel</AppButton>
     </form>
 </template>
@@ -17,6 +14,12 @@
 
 
 export default {
+    props:{
+        post: {
+            type: Object,
+            required: false
+        }
+    },
     data(){
         return{
             editedPost:this.post 
@@ -35,26 +38,18 @@ export default {
             //Save Posts
             this.$emit('submit', this.editedPost)
         },
-        deletePost(){
-            console.log(this.editedPost.title)
-            if(this.editedPost.id != null){
-                console.log('not null');
-            }else{
-                console.log('its null')
-            }
+        deletePost(){           
+            this.$store.dispatch('deletePost', this.editedPost)
+            .then(() => {
+                this.$router.push("/admin");
+            })
         },
         onCancel(){
             //navigate back
             this.$router.push('/admin');
         }
     },
-
-    props:{
-        post: {
-            type: Object,
-            required: false
-        }
-    }
+    
 }
 </script>
 <style scoped>
