@@ -1,7 +1,7 @@
 <template>
   <div class="home-page">
     <section class="intro">
-      <h1>Get the latest posts</h1>
+      <!-- <h1>Get the latest posts</h1> -->
     </section>
     <PostList :posts="loadedPosts" />
   </div>
@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
   .intro {
-  height: 300px;
+  height: 90vh;
   position: relative;
   padding: 30px;
   box-sizing: border-box;
