@@ -19,8 +19,10 @@ export default {
 
   asyncData(context) { 
     if(context.payload){
+      console.log('payload')
       return {
         loadedPost: context.payload.postData
+
       }
     }
     return context.app.$axios.$get(
@@ -28,11 +30,17 @@ export default {
       context.params.postID +
       '.json')
     .then( data => {
+      console.log(data)
+      console.log(
+      '/posts/' +
+      context.params.postID +
+      '.json')
+      
       return {
         loadedPost: data
       }
     })
-    .catch( e => context.error(e))
+    .catch( e => console.log(e))
   },
 
   head: {
