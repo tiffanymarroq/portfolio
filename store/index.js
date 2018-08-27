@@ -13,20 +13,23 @@ const createStore = () => {
             },
             addPost(state, post){
                 state.loadedPosts.push(post)
+                console.log('add');
+                
             },
             editPost(state, editedPost){
                 const postIndex = state.loadedPosts.findIndex(
                     post => post.id === editedPost.id
                 );
                 state.loadedPosts[postIndex] = editedPost;
-                console.log('edit')
-                console.log(editedPost)
+                console.log('edit');
             },
             deletePost(state, editedPost){
                 const postIndex = state.loadedPosts.findIndex(
                     post => post.id === editedPost.id
                 );
-                state.loadedPosts.splice(postIndex, 1);              
+                state.loadedPosts.splice(postIndex, 1);  
+                console.log('delete');
+                            
             },
             setToken(state, token){
                 state.token = token;
