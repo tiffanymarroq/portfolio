@@ -1,6 +1,6 @@
 <template>
-<nuxt-link :to="{name: postLink, params:{ postID: id, postTitle: convertTitle }}"  class="post-preview">
-    <article>
+<nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}"  @click.native="setID(id)" class="post-preview">
+    <article >
       <div 
         class="post-thumbnail" 
         :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
@@ -44,12 +44,13 @@ export default {
       convertTitle(){
         return this.title.split(' ').join('-').toLowerCase();
       },
+     
       
     },
     methods: {
-      setID(){
-        console.log(this.id + ' set')
-        return this.$store.commit('currentPost', this.id)
+       setID(id){
+        console.log(id + ' set')
+        return this.$store.commit('currentPost', id)
       }
     }
 

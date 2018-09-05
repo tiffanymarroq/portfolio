@@ -21,7 +21,7 @@ export default {
 
 <style scoped>
   .intro {
-  height: 90vh;
+  height: 300px;
   position: relative;
   padding: 30px;
   box-sizing: border-box;

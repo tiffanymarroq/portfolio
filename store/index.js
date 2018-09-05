@@ -6,7 +6,7 @@ const createStore = () => {
         state:{
             loadedPosts:[],
             token: null,
-            id:''
+            id: ''
         },
         mutations:{
             setPosts(state, posts) {
@@ -39,7 +39,11 @@ const createStore = () => {
                 state.token = null;
             },
             currentPost(state, id){
-                state.id = id;
+                    state.id = null;
+                    state.id = id;
+                    localStorage.setItem('postID', id);
+                    console.log(state.id + ' store get');
+                    
             }
         },
         actions:{
@@ -167,7 +171,9 @@ const createStore = () => {
                     localStorage.removeItem('token');
                     localStorage.removeItem('tokenExpiration');
                 }
-            }
+            },
+
+
         },
         getters: {
             loadedPosts(state) {
@@ -177,6 +183,12 @@ const createStore = () => {
                 return state.token != null;
             },
             currentPost(state){
+                if(process.client ){
+
+                    state.id = localStorage.getItem('postID');
+                }
+                
+                console.log(state.id + ' store get')
                 return state.id
             }
             

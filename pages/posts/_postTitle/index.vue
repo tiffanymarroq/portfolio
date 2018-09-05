@@ -7,6 +7,7 @@
                 <div class="post-detail">Written by {{loadedPost.author}}</div>
             </div>
             <p class="post-content">{{loadedPost.content}}</p>
+            <p>id: {{id}}</p>
         </section>
         <section class="post-feedback">
             <p>Let me know what you think</p>
@@ -18,40 +19,55 @@
 export default {
   data(){
     return{
-      id:""
+      id: '',
+      loadedPost: []
     }
   },
-  methods: {
-    getID(){
-      console.log(this.id + ' set id post')
-      return this.$store.getters.currentPost == this.id;
-    }
-  },
-  asyncData(context) { 
-    if(context.payload){
-      console.log('payload')
-      return {
-        loadedPost: context.payload.postData
-
-      }
-    }
-    return context.app.$axios.$get(
+  created(){
+    this.id = this.$store.getters.currentPost;
+    console.log(this.id + ' id post')
+    this.$axios.$get(
       '/posts/' +
-      context.params.postID +
+      this.id +
       '.json')
     .then( data => {
-      // console.log(this.id)
-      console.log(
-      '/posts/' +
-      context.params.postID +
-      '.json')
       
-      return {
-        loadedPost: data
-      }
+      
+        this.loadedPost = data
+      
     })
     .catch( e => console.log(e))
   },
+    
+
+  // asyncData(context) { 
+  //   if(context.payload){
+  //     console.log('payload')
+  //     return {
+  //       loadedPost: context.payload.postData
+
+  //     }
+  //   }
+  //   return context.app.$axios.$get(
+  //     '/posts/' +
+  //     context.store.getters.currentPost +
+  //     '.json')
+  //   .then( data => {
+  //     console.log(
+  //     context.store.getters.currentPost +
+  //     " get")
+
+  //     console.log(
+  //     data +
+  //     " get")
+      
+  //     return {
+  //       loadedPost: data,
+  //       post: data.id
+  //     }
+  //   })
+  //   .catch( e => console.log(e))
+  // },
 
   head: {
     title: 'blog'
