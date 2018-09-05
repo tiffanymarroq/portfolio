@@ -27,10 +27,11 @@ export default {
             .then(data => {
                 console.log(data + ' adming post')
                 console.log(context.params.postID + ' adming post')
-                
+                console.log(context.params.postTitle + ' adming post')
                 return {
                     loadedPost: { ...data, id: context.params.postID }
-                };
+                }
+                 
             })
             .catch( e => context.error());
 

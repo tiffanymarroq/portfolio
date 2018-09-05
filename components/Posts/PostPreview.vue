@@ -43,8 +43,15 @@ export default {
       },
       convertTitle(){
         return this.title.split(' ').join('-').toLowerCase();
-      }
+      },
+      
     },
+    methods: {
+      setID(){
+        console.log(this.id + ' set')
+        return this.$store.commit('currentPost', this.id)
+      }
+    }
 
 }
 </script>

@@ -16,7 +16,17 @@
 </template>
 <script>
 export default {
-
+  data(){
+    return{
+      id:""
+    }
+  },
+  methods: {
+    getID(){
+      console.log(this.id + ' set id post')
+      return this.$store.getters.currentPost == this.id;
+    }
+  },
   asyncData(context) { 
     if(context.payload){
       console.log('payload')
@@ -30,7 +40,7 @@ export default {
       context.params.postID +
       '.json')
     .then( data => {
-      console.log(data)
+      // console.log(this.id)
       console.log(
       '/posts/' +
       context.params.postID +

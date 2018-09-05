@@ -5,7 +5,8 @@ const createStore = () => {
     return new Vuex.Store({
         state:{
             loadedPosts:[],
-            token: null
+            token: null,
+            id:''
         },
         mutations:{
             setPosts(state, posts) {
@@ -36,6 +37,9 @@ const createStore = () => {
             },
             clearToken(state){
                 state.token = null;
+            },
+            currentPost(state, id){
+                state.id = id;
             }
         },
         actions:{
@@ -171,7 +175,11 @@ const createStore = () => {
             },
             isAuthenticated(state){
                 return state.token != null;
+            },
+            currentPost(state){
+                return state.id
             }
+            
         }
     })
 }
