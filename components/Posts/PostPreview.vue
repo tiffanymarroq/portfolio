@@ -39,7 +39,7 @@ export default {
     },
     computed: {
       postLink() {
-        return this.isAdmin ? 'admin-postTitle' : 'posts-postTitle';
+        return this.isAdmin ? 'admin-postID' : 'posts-postID';
       },
       convertTitle(){
         return this.title.split(' ').join('-').toLowerCase();

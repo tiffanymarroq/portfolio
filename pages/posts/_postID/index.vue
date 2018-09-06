@@ -23,51 +23,51 @@ export default {
       loadedPost: []
     }
   },
-  created(){
-    this.id = this.$store.getters.currentPost;
-    console.log(this.id + ' id post')
-    this.$axios.$get(
-      '/posts/' +
-      this.id +
-      '.json')
-    .then( data => {
-      
-      
-        this.loadedPost = data
-      
-    })
-    .catch( e => console.log(e))
-  },
-    
-
-  // asyncData(context) { 
-  //   if(context.payload){
-  //     console.log('payload')
-  //     return {
-  //       loadedPost: context.payload.postData
-
-  //     }
-  //   }
-  //   return context.app.$axios.$get(
+  // created(){
+  //   this.id = this.$store.getters.currentPost;
+  //   console.log(this.id + ' id post')
+  //   this.$axios.$get(
   //     '/posts/' +
-  //     context.store.getters.currentPost +
+  //     this.id +
   //     '.json')
   //   .then( data => {
-  //     console.log(
-  //     context.store.getters.currentPost +
-  //     " get")
-
-  //     console.log(
-  //     data +
-  //     " get")
       
-  //     return {
-  //       loadedPost: data,
-  //       post: data.id
-  //     }
+      
+  //       this.loadedPost = data
+      
   //   })
   //   .catch( e => console.log(e))
   // },
+    
+
+  asyncData(context) { 
+    if(context.payload){
+      console.log('payload')
+      return {
+        loadedPost: context.payload.postData
+
+      }
+    }
+    return context.app.$axios.$get(
+      '/posts/' +
+      context.params.postID +
+      '.json')
+    .then( data => {
+      console.log(
+      context.store.getters.currentPost +
+      " get")
+
+      console.log(
+      data +
+      " get")
+      
+      return {
+        loadedPost: data,
+        post: data.id
+      }
+    })
+    .catch( e => console.log(e))
+  },
 
   head: {
     title: 'blog'
