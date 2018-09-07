@@ -3,6 +3,9 @@
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
                 <AppControlInput v-model="editedPost.thumbnail">Thumbnail Link</AppControlInput>
+
+                <AppControlInput control-type="image" v-model="editedPost.image" >Image</AppControlInput>
+                
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 <AppButton type="submit">Save</AppButton>
@@ -27,11 +30,15 @@ export default {
                 title: "",
                 thumbnail: "",
                 content: "",
-                previewText: ""
+                previewText: "",
+                images: ""
             }
         }
     },
     methods: {
+        onFileSelected(event) {
+            console.log(event)
+        },
         onSave() {
             //Save Posts
             this.$emit('submit', this.editedPost)

@@ -11,12 +11,27 @@
       rows="5"
       :value="value"
       @input="$emit('input', $event.target.value)"></textarea>
+    <div v-if="controlType === 'image'">
+      <input
+      type='file'
+      v-bind="$attrs"
+      :value="value"
+      @change = "onFileSelected"
+      @input="$emit('input', $event.target.value)">
+      <button @click="onUpload">Upload</button>
+    </div>
+    
   </div>
 </template>
 
 <script>
 export default {
   name: 'AppInputControl',
+  data(){
+    return{
+      selectedFile: null
+    }
+  },
   props: {
     controlType: {
       type: String,
@@ -25,6 +40,14 @@ export default {
     value: {
       type: String,
       default: ''
+    }
+  },
+  methods: {
+    onFileSelected(event){
+      this.selectedFile = event.target.files[0]
+    },
+    onUpload(){
+      
     }
   }
 }
