@@ -2,7 +2,8 @@ const pkg = require('./package')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 const key = require('./keys')
-const db = require('dropbox').Dropbox;
+
+
 
 module.exports = {
   mode: 'universal',
@@ -53,9 +54,10 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+   
   ],
   axios :{
-    baseURL:  process.env.BASE_URL || key.databaseURL,
+    baseURL:  process.env.BASE_URL || key.firebase.databaseURL,
     creditials: false
   },
 
@@ -71,9 +73,10 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || key.databaseURL,
-    fbAPIKey: key.apiKey,
-    databaseURL: key.databaseURL
+    baseUrl: process.env.BASE_URL || key.firebase.databaseURL,
+    fbAPIKey: key.firebase.apiKey,
+    dbAPIKey: key.dropbox.accessToken,
+    databaseURL: key.firebase.databaseURL,
   },
   transition: {
     name: 'fade',

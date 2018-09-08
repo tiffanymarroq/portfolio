@@ -1,5 +1,7 @@
 import Vuex from 'vuex';
 import Cookie from 'js-cookie';
+var Dropbox = require('dropbox').Dropbox;
+var dbx = new Dropbox({ accessToken: process.env.dbAPIKey });
 
 const createStore = () => {
     return new Vuex.Store({
@@ -43,13 +45,12 @@ const createStore = () => {
                     state.id = id;
                     localStorage.setItem('postID', id);
                     console.log(state.id + ' store get');
-                    
             }
         },
         actions:{
             nuxtServerInit(vuexContext, context) {
                 return context.app.$axios.$get( "/posts.json")
-                    .then(data => {
+                    .then(data => { 
                         const postsArray =[]
                         for(const key in data){
                             postsArray.push({ ...data[key], id:key});
@@ -93,6 +94,17 @@ const createStore = () => {
             },
             setPosts(vuexContext, posts){
                 vuexContext.commit('setPosts', posts)
+            },
+            uploadImage(vuexContext, file){
+                dbx.filesUpload(file);
+                dbx.filesListFolder({path: ''})
+                .then(function(response) {
+                    console.log('in')
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
             },
             authenticateUser(vuexContext, authData){
                 let authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +

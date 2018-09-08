@@ -18,7 +18,8 @@
       :value="value"
       @change = "onFileSelected"
       @input="$emit('input', $event.target.value)">
-      <button @click="onUpload">Upload</button>
+      <button @click="onUpload">Add</button>
+      <button @click="onRemove">Delete</button>
     </div>
     
   </div>
@@ -47,7 +48,14 @@ export default {
       this.selectedFile = event.target.files[0]
     },
     onUpload(){
-      
+      const formData = new FormData()
+      formData.append('myFile', this.selectedFile, this.selectedFile.name);
+      console.log(formData);
+
+      this.$store.dispatch('uploadImage', formData);
+    },
+    onRemove(){
+      this.selectedFile = null
     }
   }
 }
