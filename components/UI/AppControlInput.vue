@@ -13,13 +13,13 @@
       @input="$emit('input', $event.target.value)"></textarea>
     <div v-if="controlType === 'image'">
       <input
-      type='file'
+      type="file"
       v-bind="$attrs"
       :value="value"
       @change = "onFileSelected"
       @input="$emit('input', $event.target.value)">
       <button @click="onUpload">Add</button>
-      <button @click="onRemove">Delete</button>
+      <button @click="onRemove">Remove</button>
     </div>
     
   </div>
@@ -46,13 +46,15 @@ export default {
   methods: {
     onFileSelected(event){
       this.selectedFile = event.target.files[0]
+      console.log(this.selectedFile)
     },
     onUpload(){
       const formData = new FormData()
-      formData.append('myFile', this.selectedFile, this.selectedFile.name);
-      console.log(formData);
-
-      this.$store.dispatch('uploadImage', formData);
+      formData.append('myFile', this.selectedFile, this.selectedFile.name);      
+      if(formData != null){
+        console.log(this.selectedFile)
+        this.$store.dispatch('uploadImage', this.selectedFile);
+      }
     },
     onRemove(){
       this.selectedFile = null

@@ -96,7 +96,15 @@ const createStore = () => {
                 vuexContext.commit('setPosts', posts)
             },
             uploadImage(vuexContext, file){
-                dbx.filesUpload(file);
+                console.log(file.name)
+                dbx.filesUpload({contents: file, path: '/' + file.name, autorename: true})
+                .then(function(response) {
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.error(error);
+                });
+                
                 dbx.filesListFolder({path: ''})
                 .then(function(response) {
                     console.log('in')
