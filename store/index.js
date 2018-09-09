@@ -117,6 +117,7 @@ const createStore = () => {
             deleteImage(vuexContext,file){
                 // dbx.filesDelete({path: '/' + file.name});
                 //view image archive
+                
             },
             authenticateUser(vuexContext, authData){
                 let authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
