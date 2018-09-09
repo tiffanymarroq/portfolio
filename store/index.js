@@ -117,7 +117,6 @@ const createStore = () => {
             deleteImage(vuexContext,file){
                 // dbx.filesDelete({path: '/' + file.name});
                 //view image archive
-                
             },
             authenticateUser(vuexContext, authData){
                 let authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
@@ -197,20 +196,25 @@ const createStore = () => {
                     localStorage.removeItem('tokenExpiration');
                 }
             },
-
-
         },
         getters: {
-            getImage(store){
-                return dbx.fileRequestsGet( {id: "vGae3eTyJXAAAAAAAAABFQ"})
+            getImage(state){
+                console.log('get img')
+                dbx.filesListFolder({path: ''})
                 .then(function(response) {
                     console.log('in')
                     console.log(response);
                 })
                 .catch(function(error) {
-                    console.log('failed ')
                     console.log(error);
                 });
+               return dbx.fileRequestsGet({id:"id:vGae3eTyJXAAAAAAAAABDg"})
+               .then(res=> {
+                   console.log(res)
+               })
+               .catch(err => {
+                   console.log(err)
+               })
             },
             loadedPosts(state) {
                 return state.loadedPosts;

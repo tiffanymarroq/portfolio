@@ -30,7 +30,7 @@ export default {
   name: 'AppInputControl',
   data(){
     return{
-      selectedFile: null
+      selectedFile: null,
     }
   },
   props: {

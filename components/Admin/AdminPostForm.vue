@@ -3,11 +3,21 @@
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
                 <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
-                <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput>
-                <h1>{{selectedFile}} + selected</h1>
+                <!-- <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput> -->
                 <h1>{{fileName}} + name</h1>
                 <button @click.prevent="getImage">Get</button>
-                {{img}}
+                {{img}}     
+                <!-- <p v-for="i in editedPost.images">{{i}}</p> -->
+
+                <input
+                    type="file"
+                    v-bind="$attrs"
+                    @change = "onFileSelected"
+                    >
+                
+                
+                <button @click.prevent="onUpload">Add</button>
+                <button @click.prevent="onRemove">Remove</button>           
                 
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
@@ -45,8 +55,11 @@
     },
     methods: {
       onFileSelected(event) {
-        this.selectedFile = event.target.files[0]
-        console.log(this.selectedFile)
+        this.selectedFile = event.target.files[0];
+        console.log(this.selectedFile);
+        console.log(this.fileName = this.selectedFile.name);
+        console.log(this.editedPost.images)
+        // this.editedPost.images.push(this.fileName);
       },
       onUpload() {
         const formData = new FormData()
@@ -74,7 +87,7 @@
         this.$router.push('/admin');
       },
       getImage(){
-        this.img =   this.$store.getters.getImage
+        this.img = this.$store.getters.getImage;
       }
     },
 

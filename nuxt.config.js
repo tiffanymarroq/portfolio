@@ -3,8 +3,6 @@ const bodyParser = require('body-parser')
 const axios = require('axios')
 const key = require('./keys')
 
-
-
 module.exports = {
   mode: 'universal',
 
@@ -54,6 +52,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+
    
   ],
   axios :{
