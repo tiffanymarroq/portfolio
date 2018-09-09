@@ -18,8 +18,8 @@
       :value="value"
       @change = "onFileSelected"
       @input="$emit('input', $event.target.value)">
-      <button @click="onUpload">Add</button>
-      <button @click="onRemove">Remove</button>
+      <button @click.prevent="onUpload">Add</button>
+      <button @click.prevent="onRemove">Remove</button>
     </div>
     
   </div>

@@ -45,7 +45,7 @@ const createStore = () => {
                     state.id = id;
                     localStorage.setItem('postID', id);
                     console.log(state.id + ' store get');
-            }
+            },
         },
         actions:{
             nuxtServerInit(vuexContext, context) {
@@ -113,6 +113,10 @@ const createStore = () => {
                 .catch(function(error) {
                     console.log(error);
                 });
+            },
+            deleteImage(vuexContext,file){
+                // dbx.filesDelete({path: '/' + file.name});
+                //view image archive
             },
             authenticateUser(vuexContext, authData){
                 let authUrl = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=" +
@@ -196,6 +200,17 @@ const createStore = () => {
 
         },
         getters: {
+            getImage(store){
+                return dbx.fileRequestsGet( {id: "vGae3eTyJXAAAAAAAAABFQ"})
+                .then(function(response) {
+                    console.log('in')
+                    console.log(response);
+                })
+                .catch(function(error) {
+                    console.log('failed ')
+                    console.log(error);
+                });
+            },
             loadedPosts(state) {
                 return state.loadedPosts;
             },
