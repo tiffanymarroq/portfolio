@@ -1,5 +1,5 @@
 # Blog Template
-> My custom blog template
+> Portfolio in progress
 
 ## Build Setup
 
