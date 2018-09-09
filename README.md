@@ -1,4 +1,4 @@
-# Blog Template
+# Template
 > Portfolio in progress
 
 ## Build Setup
