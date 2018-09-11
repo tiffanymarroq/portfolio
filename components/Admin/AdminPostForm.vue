@@ -27,6 +27,8 @@
     </form>
 </template>
 <script>
+import dbx from '~/modules/dbx.js'
+
   export default {
     props: {
       post: {
@@ -71,6 +73,14 @@
       },
       onRemove() {
         this.selectedFile = null
+        dbx.filesListFolder({path: ''})
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
       },
       onSave() {
         //Save Posts

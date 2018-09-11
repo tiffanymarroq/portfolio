@@ -10,6 +10,7 @@
 </template>
 <script>
 import AdminPostForm from '@/components/admin/AdminPostForm'
+import dbx from '~/modules/dbx.js'
 
 export default {
     data(){

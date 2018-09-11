@@ -52,8 +52,6 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
-
-   
   ],
   axios :{
     baseURL:  process.env.BASE_URL || key.firebase.databaseURL,

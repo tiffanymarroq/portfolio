@@ -208,13 +208,15 @@ const createStore = () => {
                 .catch(function(error) {
                     console.log(error);
                 });
-               return dbx.fileRequestsGet({id:"id:vGae3eTyJXAAAAAAAAABDg"})
-               .then(res=> {
-                   console.log(res)
-               })
-               .catch(err => {
-                   console.log(err)
-               })
+               return 'get'
+            //    dbx.fileRequestsGet({id:"id:vGae3eTyJXAAAAAAAAABDg"})
+            //    .then(res=> {
+            //        console.log(res)
+            //    })
+            //    .catch(err => {
+            //        console.log('error')
+            //        console.log(err)
+            //    })
             },
             loadedPosts(state) {
                 return state.loadedPosts;
