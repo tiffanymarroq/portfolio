@@ -5,15 +5,15 @@
                 <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
                 <!-- <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput> -->
                 <h1>{{fileName}} + name</h1>
-        
+                {{link}}
                 <input
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     >
+                <img :src="link" alt="">
                 <button :disabled="disabled" @click.prevent="onUpload">Add</button>
                 <button @click.prevent="onRemove">Remove</button>           
-                
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 <AppButton type="submit">Save</AppButton>
@@ -39,6 +39,7 @@ import dbx from '~/modules/dbx.js'
         fileContents: null,
         img: null,
         images: [],
+        link: '',
         editedPost: this.post ?
           { ...this.post
           } :
@@ -53,8 +54,24 @@ import dbx from '~/modules/dbx.js'
       }
     },
     methods: {
-      addTo(id, path, name){
-        this.images.push({id: id, path: path, name: name})
+      addTo(id, name, path){
+        console.log('add')
+        dbx.sharingCreateSharedLink({path: path, short_url: false})
+        .then((data) => {
+          let link = ''
+          console.log(data.url)
+          link = data.url.replace("?dl=0","?raw=1")
+          this.link = link;
+          console.log(link)
+          this.images.push({id: id, name: name, path: path, link: link})
+          
+
+          
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+
         console.log(this.images)
       },
       onFileSelected(event) {
@@ -66,15 +83,12 @@ import dbx from '~/modules/dbx.js'
         if (this.selectedFile != null) {
           dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
           .then((data) => {
-            console.log(data)
-            let id = data.id;
-            let path = data.path_display;
-            let name = data.name
+            console.log(data.id)
+            this.addTo(data.id, data.name, data.path_display)
           })
           .catch(err => {
             console.error(err);
           });
-          this.disabled = true;
         }
       },
       onRemove() {
