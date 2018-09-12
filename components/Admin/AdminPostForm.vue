@@ -64,9 +64,8 @@ import dbx from '~/modules/dbx.js'
           this.link = link;
           console.log(link)
           this.images.push({id: id, name: name, path: path, link: link})
-          
-
-          
+          this.editedPost.thumbnail = link;
+          console.log(this.editedPost.thumbnail + " link")
         })
         .catch((err) => {
           console.log(err)
@@ -83,7 +82,6 @@ import dbx from '~/modules/dbx.js'
         if (this.selectedFile != null) {
           dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
           .then((data) => {
-            console.log(data.id)
             this.addTo(data.id, data.name, data.path_display)
           })
           .catch(err => {
@@ -93,14 +91,8 @@ import dbx from '~/modules/dbx.js'
       },
       onRemove() {
         this.selectedFile = null
+        this.link = ''
         this.disabled = false;        
-        dbx.filesListFolder({path: ''})
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
 
       },
       onSave() {
