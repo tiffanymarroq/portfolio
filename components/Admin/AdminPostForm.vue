@@ -40,6 +40,7 @@ import dbx from '~/modules/dbx.js'
         fileName: '',
         fileContents: null,
         img: null,
+        image: [],
         editedPost: this.post ?
           { ...this.post
           } :
@@ -49,7 +50,7 @@ import dbx from '~/modules/dbx.js'
             thumbnail: "",
             content: "",
             previewText: "",
-            images: []
+            images: [{id: 'hi'}]
           }
       }
     },
@@ -58,14 +59,16 @@ import dbx from '~/modules/dbx.js'
         console.log(event.target.files)
         this.selectedFile = event.target.files[0];
         this.fileName = this.selectedFile.name;
+        this.image.push('hello')
+        console.log(this.image)
         
       },
       onUpload() {
+        let tmp = this;
         if (this.selectedFile != null) {
           dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
-          .then(data => {
-            console.log(data);
-            // this.editedPost.images.push({id: data.id, path: data.path_display, name: data.name})
+          .then((data) => {
+            this.editedPost.images.push({id: data.id, path: data.path_display, name: data.name})
 
           })
           .catch(err => {
