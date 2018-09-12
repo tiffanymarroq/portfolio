@@ -198,26 +198,8 @@ const createStore = () => {
             },
         },
         getters: {
-            getImage(state){
-                console.log('get img')
-                dbx.filesListFolder({path: ''})
-                .then(function(response) {
-                    console.log('in')
-                    console.log(response);
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
-               return 'get'
-            //    dbx.fileRequestsGet({id:"id:vGae3eTyJXAAAAAAAAABDg"})
-            //    .then(res=> {
-            //        console.log(res)
-            //    })
-            //    .catch(err => {
-            //        console.log('error')
-            //        console.log(err)
-            //    })
-            },
+
+
             loadedPosts(state) {
                 return state.loadedPosts;
             },

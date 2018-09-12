@@ -7,16 +7,13 @@
                 <h1>{{fileName}} + name</h1>
                 <button @click.prevent="getImage">Get</button>
                 {{img}}     
-                <!-- <p v-for="i in editedPost.images">{{i}}</p> -->
 
                 <input
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     >
-                
-                
-                <button @click.prevent="onUpload">Add</button>
+                <button :disabled="disabled" @click.prevent="onUpload">Add</button>
                 <button @click.prevent="onRemove">Remove</button>           
                 
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
@@ -38,6 +35,7 @@ import dbx from '~/modules/dbx.js'
     },
     data() {
       return {
+        disabled: false,
         selectedFile: null,
         fileName: '',
         fileContents: null,
@@ -57,22 +55,29 @@ import dbx from '~/modules/dbx.js'
     },
     methods: {
       onFileSelected(event) {
+        console.log(event.target.files)
         this.selectedFile = event.target.files[0];
-        console.log(this.selectedFile);
-        console.log(this.fileName = this.selectedFile.name);
-        console.log(this.editedPost.images)
-        // this.editedPost.images.push(this.fileName);
+        this.fileName = this.selectedFile.name;
+        
       },
       onUpload() {
-        const formData = new FormData()
-        formData.append('myFile', this.selectedFile, this.selectedFile.name);
-        if (formData != null) {
-          console.log(this.selectedFile)
-          this.$store.dispatch('uploadImage', this.selectedFile);
+        if (this.selectedFile != null) {
+          dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
+          .then(data => {
+            console.log(data);
+            // this.editedPost.images.push({id: data.id, path: data.path_display, name: data.name})
+
+          })
+          .catch(err => {
+            console.log(this.editedPost.images)
+            console.error(err);
+          });
+          this.disabled = true;
         }
       },
       onRemove() {
         this.selectedFile = null
+        this.disabled = false;
         dbx.filesListFolder({path: ''})
         .then(function(response) {
           console.log(response);
@@ -96,9 +101,6 @@ import dbx from '~/modules/dbx.js'
         //navigate back
         this.$router.push('/admin');
       },
-      getImage(){
-        this.img = this.$store.getters.getImage;
-      }
     },
 
   } 
