@@ -5,9 +5,7 @@
                 <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
                 <!-- <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput> -->
                 <h1>{{fileName}} + name</h1>
-                <button @click.prevent="getImage">Get</button>
-                {{img}}     
-
+        
                 <input
                     type="file"
                     v-bind="$attrs"
@@ -40,7 +38,7 @@ import dbx from '~/modules/dbx.js'
         fileName: '',
         fileContents: null,
         img: null,
-        image: [],
+        images: [],
         editedPost: this.post ?
           { ...this.post
           } :
@@ -50,29 +48,30 @@ import dbx from '~/modules/dbx.js'
             thumbnail: "",
             content: "",
             previewText: "",
-            images: [{id: 'hi'}]
+            images: []
           }
       }
     },
     methods: {
+      addTo(id, path, name){
+        this.images.push({id: id, path: path, name: name})
+        console.log(this.images)
+      },
       onFileSelected(event) {
         console.log(event.target.files)
         this.selectedFile = event.target.files[0];
-        this.fileName = this.selectedFile.name;
-        this.image.push('hello')
-        console.log(this.image)
-        
+        this.fileName = this.selectedFile.name;        
       },
       onUpload() {
-        let tmp = this;
         if (this.selectedFile != null) {
           dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
           .then((data) => {
-            this.editedPost.images.push({id: data.id, path: data.path_display, name: data.name})
-
+            console.log(data)
+            let id = data.id;
+            let path = data.path_display;
+            let name = data.name
           })
           .catch(err => {
-            console.log(this.editedPost.images)
             console.error(err);
           });
           this.disabled = true;
@@ -80,7 +79,7 @@ import dbx from '~/modules/dbx.js'
       },
       onRemove() {
         this.selectedFile = null
-        this.disabled = false;
+        this.disabled = false;        
         dbx.filesListFolder({path: ''})
         .then(function(response) {
           console.log(response);
