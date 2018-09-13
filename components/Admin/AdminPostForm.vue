@@ -5,15 +5,14 @@
                 <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
                 <!-- <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput> -->
                 <h1>{{fileName}} + name</h1>
-                {{link}}
                 <input
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     >
                 <img :src="link" alt="">
-                <button :disabled="disabled" @click.prevent="onUpload">Add</button>
-                <button @click.prevent="onRemove">Remove</button>           
+                <AppButton :disabled="disabled" @click.prevent="onUpload" >Add</AppButton>
+                <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton>           
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 <AppButton type="submit">Save</AppButton>
@@ -36,8 +35,6 @@ import dbx from '~/modules/dbx.js'
         disabled: false,
         selectedFile: null,
         fileName: '',
-        fileContents: null,
-        img: null,
         images: [],
         link: '',
         editedPost: this.post ?
@@ -63,8 +60,9 @@ import dbx from '~/modules/dbx.js'
           link = data.url.replace("?dl=0","?raw=1")
           this.link = link;
           console.log(link)
-          this.images.push({id: id, name: name, path: path, link: link})
+          this.editedPost.images.push({id: id, name: name, path: path, link: link})
           this.editedPost.thumbnail = link;
+
           console.log(this.editedPost.thumbnail + " link")
         })
         .catch((err) => {
@@ -80,6 +78,7 @@ import dbx from '~/modules/dbx.js'
       },
       onUpload() {
         if (this.selectedFile != null) {
+          this.editedPost.thumbnail = ""
           dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
           .then((data) => {
             this.addTo(data.id, data.name, data.path_display)
@@ -92,7 +91,8 @@ import dbx from '~/modules/dbx.js'
       onRemove() {
         this.selectedFile = null
         this.link = ''
-        this.disabled = false;        
+        this.disabled = false;  
+        console.log(this.editedPost.images.id)     
 
       },
       onSave() {

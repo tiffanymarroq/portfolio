@@ -1,5 +1,7 @@
 <template>
     <div class="single-post-page">
+      <div :style="{ backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" style="width: 100%; height: 600px">
+      </div>
         <section class="post" >
             <h1 class="post-title">{{loadedPost.title}}</h1>
             <div class="post-details">
@@ -9,10 +11,12 @@
             <p class="post-content">{{loadedPost.content}}</p>
             <p>id: {{id}}</p>
         </section>
+        
         <section class="post-feedback">
             <p>Let me know what you think</p>
             
         </section>
+        
     </div>
 </template>
 <script>
