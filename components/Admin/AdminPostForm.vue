@@ -12,7 +12,11 @@
                     >
                
                 <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
-                <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton>           
+                <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton> 
+                <br>
+                <br>
+                <AppButton @click.prevent="onAddNew" >Add new Image</AppButton>           
+
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 <AppButton type="submit">Save</AppButton>
@@ -94,6 +98,9 @@ import dbx from '~/modules/dbx.js'
         this.disabled = false;  
         console.log(this.editedPost.images.id)     
 
+      },
+      onAddNew(){
+        console.log("new image")
       },
       onSave() {
         //Save Posts
