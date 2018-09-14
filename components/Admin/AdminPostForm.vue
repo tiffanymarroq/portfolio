@@ -10,8 +10,8 @@
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     >
-                <img :src="link" alt="">
-                <AppButton :disabled="disabled" @click.prevent="onUpload" >Add</AppButton>
+               
+                <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
                 <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton>           
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>

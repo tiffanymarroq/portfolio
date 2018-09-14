@@ -28,11 +28,6 @@
 <script>
 export default {
   name: 'AppInputControl',
-  data(){
-    return{
-      selectedFile: null,
-    }
-  },
   props: {
     controlType: {
       type: String,
@@ -41,23 +36,6 @@ export default {
     value: {
       type: String,
       default: ''
-    }
-  },
-  methods: {
-    onFileSelected(event){
-      this.selectedFile = event.target.files[0]
-      console.log(this.selectedFile)
-    },
-    onUpload(){
-      const formData = new FormData()
-      formData.append('myFile', this.selectedFile, this.selectedFile.name);      
-      if(formData != null){
-        console.log(this.selectedFile)
-        this.$store.dispatch('uploadImage', this.selectedFile);
-      }
-    },
-    onRemove(){
-      this.selectedFile = null
     }
   }
 }
