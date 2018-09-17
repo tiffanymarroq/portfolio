@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    <section class="intro">
+    <section class="intro-">
       <!-- <h1>Get the latest posts</h1> -->
     </section>
     <PostList :posts="loadedPosts" />

@@ -1,14 +1,14 @@
 <template>
 <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}"  @click.native="setID(id)" class="post-preview">
     <article >
+              <h1>{{title}}</h1>
+        <p>{{previewText}}</p>
       <div 
         class="post-thumbnail" 
         :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
-      <div class="post-content">
-        <h1>{{title}}</h1>
-        <p>{{previewText}}</p>
-        <p>{{id}}</p>
-      </div>
+      <!-- <div class="post-content"> -->
+
+      <!-- </div> -->
     </article>
   </nuxt-link>
 </template>
@@ -59,12 +59,16 @@ export default {
 
 <style scoped>
 .post-preview {
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 2px #ccc;
+  /* border: 1px solid #ccc;
+  border-radius: 20px;
+  box-shadow: 0 2px 2px #ccc; */
   background-color: white;
   width: 90%;
 }
-
+.post-preview:hover{
+  border-radius: 5px;
+  box-shadow: 0 2px 2px #ccc;
+}
 a {
   text-decoration: none;
   color: black;

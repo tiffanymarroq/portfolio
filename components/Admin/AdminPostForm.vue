@@ -4,19 +4,17 @@
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
                 <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
                 <!-- <AppControlInput control-type="image" v-model="selectedFile" @change="onFileSelected">Thumbnail</AppControlInput> -->
-                <h1>{{fileName}} + name</h1>
                 <input
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     >
-               
+
                 <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
                 <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton> 
                 <br>
                 <br>
                 <AppButton @click.prevent="onAddNew" >Add new Image</AppButton>           
-
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
                 <AppButton type="submit">Save</AppButton>
@@ -60,20 +58,15 @@ import dbx from '~/modules/dbx.js'
         dbx.sharingCreateSharedLink({path: path, short_url: false})
         .then((data) => {
           let link = ''
-          console.log(data.url)
           link = data.url.replace("?dl=0","?raw=1")
           this.link = link;
-          console.log(link)
           this.editedPost.images.push({id: id, name: name, path: path, link: link})
           this.editedPost.thumbnail = link;
 
-          console.log(this.editedPost.thumbnail + " link")
         })
         .catch((err) => {
           console.log(err)
         })
-
-        console.log(this.images)
       },
       onFileSelected(event) {
         console.log(event.target.files)
@@ -96,8 +89,6 @@ import dbx from '~/modules/dbx.js'
         this.selectedFile = null
         this.link = ''
         this.disabled = false;  
-        console.log(this.editedPost.images.id)     
-
       },
       onAddNew(){
         console.log("new image")
@@ -117,7 +108,6 @@ import dbx from '~/modules/dbx.js'
         this.$router.push('/admin');
       },
     },
-
   } 
   </script>
 

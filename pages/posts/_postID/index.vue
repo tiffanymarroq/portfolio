@@ -1,6 +1,6 @@
 <template>
     <div class="single-post-page">
-      <div :style="{ backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" style="width: 100%; height: 600px">
+      <div :style="{ backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" style="width: 100%; height: 60vh">
       </div>
         <section class="post" >
             <h1 class="post-title">{{loadedPost.title}}</h1>
