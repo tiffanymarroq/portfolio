@@ -1,7 +1,7 @@
 <template>
     <div class="single-post-page">
-      <div :style="{ backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" style="width: 100%; height: 60vh">
-      </div>
+      <!-- <div :style="{ backgroundImage: 'url(' + loadedPost.thumbnail + ')'}" style="width: 100%; height: 60vh"> -->
+      <!-- </div> -->
         <section class="post" >
             <h1 class="post-title">{{loadedPost.title}}</h1>
             <div class="post-details">
@@ -16,6 +16,9 @@
             <p>Let me know what you think</p>
             
         </section>
+        <div v-for="img in loadedPost.images">
+          <img :src="img.link" alt="" style="width: 100%; margin: 20px 0 ">
+        </div>
         
     </div>
 </template>
