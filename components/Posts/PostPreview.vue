@@ -1,5 +1,5 @@
 <template>
-<nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}"  @click.native="setID(id)" class="post-preview">
+<nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}"  class="post-preview">
     <article >
               <h1>{{title}}</h1>
         <p>{{previewText}}</p>

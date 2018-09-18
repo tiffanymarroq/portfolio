@@ -12,7 +12,7 @@
           @click="isLogin = !isLogin">Switch to {{ isLogin ? 'Signup' : 'Login' }}</AppButton>
       </form>
     </div>
-    <AppButton style="margin-left: auto;" @click="$router.push('/')">Home</AppButton>
+    <AppButton  @click="$router.push('/')">Home</AppButton>
   </div>
 </template>
 

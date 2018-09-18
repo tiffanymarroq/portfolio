@@ -16,7 +16,7 @@
             <p>Let me know what you think</p>
             
         </section>
-        <div v-for="img in loadedPost.images">
+        <div v-for="(img,index) in loadedPost.images" v-if="index >= 1">
           <img v-lazy="img.link" alt="" style="width: 100%; margin: 20px 0 ">
         </div>
         

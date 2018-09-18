@@ -2,26 +2,29 @@
     <form @submit.prevent="onSave">
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
-                <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput>
-                {{editedPost.thumbnail}}
+                <!-- <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput> -->
+                {{editedPost.images[0].name}}
                 <input
+                    v-show = "editedPost.images[0].name == ''"
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
-                  
+                    @click = "isThumbnail(true)"
                     >
                 <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
-                <AppButton @click.prevent="onRemove"  style="margin-left: 10px">Remove</AppButton> 
+                <AppButton @click.prevent="onRemove" @click = "isThumbnail(true)" style="margin-left: 10px">Remove</AppButton> 
                 <br>
                 <br>
                 <h1>Images</h1>
-                <div v-for="(img, index) in editedPost.images" >
+                <div v-for="(img, index) in editedPost.images" v-if="index >= 1">
                   {{img.name}}
-                  <br>
+ 
                   <input  type="file" v-bind="$attrs"
-                    @change = "onFileSelected">
+                    @click = "isThumbnail(false)"
+                    @change = "onFileSelected" 
+                    v-show = "img.name == ''">
                   <AppButton :disabled="disabled" @click.prevent="onUpload(index)" >Upload</AppButton>
-                  <AppButton @click.prevent="onRemove(index)"  style="margin-left: 10px">Remove</AppButton> 
+                  <AppButton @click.prevent="onRemove(index)" @click = "isThumbnail(true)" btn-style="cancel" style="margin-left: 10px">Remove</AppButton> 
                   <br>
                   <br>
                 </div>
@@ -48,17 +51,21 @@ import dbx from '~/modules/dbx.js'
       return {
         disabled: false,
         fileName: '',
-        thumbnail: '',
+        thumbnail: false,
         editedPost: this.post ?
           { ...this.post
           } :
           {
-            author: "",
+            author: "Tiffany Marroquin",
             title: "",
-            thumbnail: "",
             content: "",
             previewText: "",
-            images: []
+            images: [{
+              name: '',
+              link: '',
+              path: '',
+              id: ''
+            }]
           }
       }
     },
@@ -75,10 +82,20 @@ import dbx from '~/modules/dbx.js'
           let link = ''
           link = data.url.replace("?dl=0","?raw=1")
           // this.editedPost.images.push({id: id, name: name, path: path, link: link})
+            if(this.thumbnail){
+              console.log('pass link')
+              this.editedPost.images[0].name = name
+              this.editedPost.images[0].path = path
+              this.editedPost.images[0].link = link
+              this.editedPost.images[0].id = id
+              
+            }else{
+              this.editedPost.images[index].id = id
+              this.editedPost.images[index].name = name
+              this.editedPost.images[index].link = link
+              this.editedPost.images[index].path = path
+            }
 
-            this.editedPost.images[index].id = id
-            this.editedPost.images[index].name = name
-            this.editedPost.images[index].link = link
 
         })
         .catch((err) => {
@@ -103,7 +120,19 @@ import dbx from '~/modules/dbx.js'
         }
       },
       onRemove(index) { 
-        this.editedPost.images.splice(index, 1);
+        if(this.thumbnail){
+            if(this.editedPost.images[0].name != ''){
+              this.editedPost.images[0].name = ''
+              this.editedPost.images[0].path = ''
+              this.editedPost.images[0].link = ''
+              this.editedPost.images[0].id = ''
+            }
+        }else{
+          if(this.editedPost.images.length >= 1){
+            this.editedPost.images.splice(index, 1);
+          }
+        }
+
         console.log(this.editedPost.images)
       },
       onAddNew(){
@@ -111,6 +140,7 @@ import dbx from '~/modules/dbx.js'
           name: '',
           id: '',
           link: '',
+          path: ''
         })
         console.log(this.editedPost.images)
 
