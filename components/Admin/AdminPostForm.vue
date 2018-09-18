@@ -24,7 +24,7 @@
                     @change = "onFileSelected" 
                     v-show = "img.name == ''">
                   <AppButton :disabled="disabled" @click.prevent="onUpload(index)" >Upload</AppButton>
-                  <AppButton @click.prevent="onRemove(index)" @click = "isThumbnail(true)" btn-style="cancel" style="margin-left: 10px">Remove</AppButton> 
+                  <AppButton @click.prevent="onRemove(index)" @click = "isThumbnail(false)" btn-style="cancel" style="margin-left: 10px">Remove</AppButton> 
                   <br>
                   <br>
                 </div>
@@ -120,15 +120,20 @@ import dbx from '~/modules/dbx.js'
         }
       },
       onRemove(index) { 
+        console.log(this.thumbnail)
         if(this.thumbnail){
             if(this.editedPost.images[0].name != ''){
               this.editedPost.images[0].name = ''
               this.editedPost.images[0].path = ''
               this.editedPost.images[0].link = ''
               this.editedPost.images[0].id = ''
+            }else{
+              return;
             }
         }else{
-          if(this.editedPost.images.length >= 1){
+            console.log('removed splice')
+          
+          if(this.editedPost.images.length > 1){
             this.editedPost.images.splice(index, 1);
           }
         }
