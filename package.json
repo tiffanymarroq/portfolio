@@ -22,6 +22,7 @@
     "save": "^2.3.2"
   },
   "devDependencies": {
-    "cross-env": "^5.0.1"
+    "cross-env": "^5.0.1",
+    "vue-lazyload": "^1.2.6"
   }
 }

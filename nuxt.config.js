@@ -43,7 +43,8 @@ module.exports = {
   */
   plugins: [
     '~plugins/core-components.js',
-    '~plugins/date-filter.js'
+    '~plugins/date-filter.js',
+    '~plugins/vue-lazyload.js'
     
   ],
 
