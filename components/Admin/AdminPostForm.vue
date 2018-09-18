@@ -3,28 +3,31 @@
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
                 <!-- <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput> -->
+                {{thumbnail}} + thumb
                 {{editedPost.images[0].name}}
                 <input
+                    id="thumbnail-file"
                     v-show = "editedPost.images[0].name == ''"
                     type="file"
                     v-bind="$attrs"
                     @change = "onFileSelected"
-                    @click = "isThumbnail(true)"
+                    @isThumb = "thumbnail = true"
+
                     >
                 <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
-                <AppButton @click.prevent="onRemove" @click = "isThumbnail(true)" style="margin-left: 10px">Remove</AppButton> 
+                <AppButton @click.prevent="onRemove" @isThumb = "thumbnail = true" style="margin-left: 10px">Remove</AppButton> 
                 <br>
                 <br>
                 <h1>Images</h1>
-                <div v-for="(img, index) in editedPost.images" v-if="index >= 1">
+                <div v-for="(img, index) in editedPost.images" v-if="index >= 1" :key ="index">
                   {{img.name}}
  
                   <input  type="file" v-bind="$attrs"
-                    @click = "isThumbnail(false)"
+                    @isThumb = "thumbnail = true"
                     @change = "onFileSelected" 
                     v-show = "img.name == ''">
                   <AppButton :disabled="disabled" @click.prevent="onUpload(index)" >Upload</AppButton>
-                  <AppButton @click.prevent="onRemove(index)" @click = "isThumbnail(false)" btn-style="cancel" style="margin-left: 10px">Remove</AppButton> 
+                  <AppButton @click.prevent="onRemove(index)" @isThumb = "thumbnail = true"  style="margin-left: 10px">Remove</AppButton> 
                   <br>
                   <br>
                 </div>
@@ -51,7 +54,8 @@ import dbx from '~/modules/dbx.js'
       return {
         disabled: false,
         fileName: '',
-        thumbnail: false,
+        thumbnail: null,
+        selectedFile: '',
         editedPost: this.post ?
           { ...this.post
           } :
@@ -71,8 +75,11 @@ import dbx from '~/modules/dbx.js'
     },
     methods: {
       isThumbnail(ans){
-        console.log(this.thumbnail)
-        this.thumbnail = ans;
+        console.log(this.thumbnail + ' is func')
+
+          this.thumbnail = ans
+        
+
       },
       addTo(id, name, path,index){
         console.log(this.thumbnail + 'thumb')
@@ -120,20 +127,23 @@ import dbx from '~/modules/dbx.js'
         }
       },
       onRemove(index) { 
-        console.log(this.thumbnail)
+        console.log(this.thumbnail + " thumb")
+        console.log(this.selectedFile + "file")
         if(this.thumbnail){
             if(this.editedPost.images[0].name != ''){
+              document.getElementById("thumbnail-file").value = "";
+              console.log(document.getElementById("thumbnail-file").value + ' value')
+              this.selectedFile =''
               this.editedPost.images[0].name = ''
               this.editedPost.images[0].path = ''
               this.editedPost.images[0].link = ''
               this.editedPost.images[0].id = ''
-            }else{
-              return;
             }
         }else{
             console.log('removed splice')
+            console.log(index)
           
-          if(this.editedPost.images.length > 1){
+          if(this.editedPost.images.length > 1 && index != 0){
             this.editedPost.images.splice(index, 1);
           }
         }
@@ -147,7 +157,6 @@ import dbx from '~/modules/dbx.js'
           link: '',
           path: ''
         })
-        console.log(this.editedPost.images)
 
       },
       onSave() {
@@ -174,4 +183,5 @@ import dbx from '~/modules/dbx.js'
         margin: 0 auto;
         padding: 0 20px;
     }
+
 </style>
