@@ -14,8 +14,8 @@
                     @isThumb = "thumbnail = true"
 
                     >
-                <AppButton :disabled="disabled" @click.prevent="onUpload" >Upload</AppButton>
-                <AppButton @click.prevent="onRemove" @isThumb = "thumbnail = true" style="margin-left: 10px">Remove</AppButton> 
+                <AppButton :disabled="disabled" @click.prevent="onUpload(0)" >Upload</AppButton>
+                <AppButton @click.prevent="onRemove(0)" @isThumb = "thumbnail = true" style="margin-left: 10px">Remove</AppButton> 
                 <br>
                 <br>
                 <h1>Images</h1>
@@ -56,47 +56,48 @@ import dbx from '~/modules/dbx.js'
         fileName: '',
         thumbnail: null,
         selectedFile: '',
-        editedPost: this.post ?
-          { ...this.post
-          } :
-          {
-            author: "Tiffany Marroquin",
-            title: "",
-            content: "",
-            previewText: "",
-            images: [{
-              name: '',
-              link: '',
-              path: '',
-              id: ''
-            }]
-          }
+        editedPost: this.post ? { ...this.post
+        } : {
+          author: "Tiffany Marroquin",
+          title: "",
+          content: "",
+          previewText: "",
+          images: [{
+            name: '',
+            link: '',
+            path: '',
+            id: ''
+          }]
+        }
       }
     },
     methods: {
-      isThumbnail(ans){
+      isThumbnail(ans) {
         console.log(this.thumbnail + ' is func')
 
-          this.thumbnail = ans
-        
+        this.thumbnail = ans
+
 
       },
-      addTo(id, name, path,index){
+      addTo(id, name, path, index) {
         console.log(this.thumbnail + 'thumb')
         console.log('add')
-        dbx.sharingCreateSharedLink({path: path, short_url: false})
-        .then((data) => {
-          let link = ''
-          link = data.url.replace("?dl=0","?raw=1")
-          // this.editedPost.images.push({id: id, name: name, path: path, link: link})
-            if(this.thumbnail){
+        dbx.sharingCreateSharedLink({
+            path: path,
+            short_url: false
+          })
+          .then((data) => {
+            let link = ''
+            link = data.url.replace("?dl=0", "?raw=1")
+            // this.editedPost.images.push({id: id, name: name, path: path, link: link})
+            if (index) {
               console.log('pass link')
               this.editedPost.images[0].name = name
               this.editedPost.images[0].path = path
               this.editedPost.images[0].link = link
               this.editedPost.images[0].id = id
-              
-            }else{
+
+            } else {
               this.editedPost.images[index].id = id
               this.editedPost.images[index].name = name
               this.editedPost.images[index].link = link
@@ -104,53 +105,57 @@ import dbx from '~/modules/dbx.js'
             }
 
 
-        })
-        .catch((err) => {
-          console.log(err)
-        })
+          })
+          .catch((err) => {
+            console.log(err)
+          })
         console.log(this.editedPost.images)
       },
       onFileSelected(event) {
         this.selectedFile = event.target.files[0];
-        this.fileName = this.selectedFile.name;        
+        this.fileName = this.selectedFile.name;
       },
       onUpload(index) {
         if (this.selectedFile != null) {
           this.editedPost.thumbnail = ""
-          dbx.filesUpload({contents: this.selectedFile, path: '/' + this.fileName, autorename: true})
-          .then((data) => {
-            this.addTo(data.id, data.name, data.path_display, index)
-          })
-          .catch(err => {
-            console.error(err);
-          });
+          dbx.filesUpload({
+              contents: this.selectedFile,
+              path: '/' + this.fileName,
+              autorename: true
+            })
+            .then((data) => {
+              this.addTo(data.id, data.name, data.path_display, index)
+            })
+            .catch(err => {
+              console.error(err);
+            });
         }
       },
-      onRemove(index) { 
-        console.log(this.thumbnail + " thumb")
-        console.log(this.selectedFile + "file")
-        if(this.thumbnail){
-            if(this.editedPost.images[0].name != ''){
-              document.getElementById("thumbnail-file").value = "";
-              console.log(document.getElementById("thumbnail-file").value + ' value')
-              this.selectedFile =''
-              this.editedPost.images[0].name = ''
-              this.editedPost.images[0].path = ''
-              this.editedPost.images[0].link = ''
-              this.editedPost.images[0].id = ''
-            }
-        }else{
-            console.log('removed splice')
-            console.log(index)
-          
-          if(this.editedPost.images.length > 1 && index != 0){
+      onRemove(index) {
+        // console.log(this.thumbnail + " thumb")
+        // console.log(this.selectedFile + "file")
+        if (index === 0) {
+          console.log(index + ' in')
+          this.selectedFile = ''
+          this.editedPost.images[0].name = ''
+          this.editedPost.images[0].path = ''
+          this.editedPost.images[0].link = ''
+          this.editedPost.images[0].id = ''
+
+        } else {
+          console.log('removed splice')
+          console.log(index)
+          console.log(this.editedPost.images.length)
+          if (this.editedPost.images.length > 2 || index > 0) {
             this.editedPost.images.splice(index, 1);
           }
         }
 
+
+
         console.log(this.editedPost.images)
       },
-      onAddNew(){
+      onAddNew() {
         this.editedPost.images.push({
           name: '',
           id: '',
@@ -174,7 +179,8 @@ import dbx from '~/modules/dbx.js'
         this.$router.push('/admin');
       },
     },
-  } 
+  }
+
   </script>
 
 <style scoped>
