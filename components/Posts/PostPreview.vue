@@ -1,17 +1,15 @@
 <template>
-<nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}"  class="post-preview">
-    <article >
-              <h1>{{title}}</h1>
+  <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview">
+    <article>
+      <div class="post-content">
+        <h1>{{title}}</h1>
         <p>{{previewText}}</p>
-      <div 
-        class="post-thumbnail" 
-        :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
-      <!-- <div class="post-content"> -->
-
-      <!-- </div> -->
+      </div>
+      <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
     </article>
   </nuxt-link>
 </template>
+
 <script>
 export default {
     name:'PostPreview',
@@ -76,14 +74,14 @@ a {
 
 @media (min-width: 850px) {
   .post-preview {
-    width: 400px;
+    width: 500px;
     margin: 10px;
   }
 }
 
 .post-thumbnail {
   width: 100%;
-  height: 200px;
+  height: 500px;
   background-position: center;
   background-size: cover;
 }

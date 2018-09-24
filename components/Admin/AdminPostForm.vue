@@ -2,8 +2,6 @@
     <form @submit.prevent="onSave">
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
-                <!-- <AppControlInput v-model="editedPost.thumbnail" >Thumbnail Link</AppControlInput> -->
-                {{thumbnail}} + thumb
                 {{editedPost.images[0].name}}
                 <input
                     id="thumbnail-file"
@@ -12,11 +10,12 @@
                     v-bind="$attrs"
                     @change = "onFileSelected"
                     @isThumb = "thumbnail = true"
-
                     >
+                    <br>
+                  <br>
                 <AppButton :disabled="disabled" @click.prevent="onUpload(0)" >Upload</AppButton>
-                <AppButton @click.prevent="onRemove(0)" @isThumb = "thumbnail = true" style="margin-left: 10px">Remove</AppButton> 
-                <br>
+                <AppButton @click.prevent="onRemove(0)" style="margin-left: 10px">Remove</AppButton> 
+                <br> 
                 <br>
                 <h1>Images</h1>
                 <div v-for="(img, index) in editedPost.images" v-if="index >= 1" :key ="index">
@@ -26,12 +25,13 @@
                     @isThumb = "thumbnail = true"
                     @change = "onFileSelected" 
                     v-show = "img.name == ''">
+                    <br>
+                  <br>
                   <AppButton :disabled="disabled" @click.prevent="onUpload(index)" >Upload</AppButton>
-                  <AppButton @click.prevent="onRemove(index)" @isThumb = "thumbnail = true"  style="margin-left: 10px">Remove</AppButton> 
+                  <AppButton @click.prevent="onRemove(index)"  style="margin-left: 10px">Remove</AppButton> 
                   <br>
                   <br>
                 </div>
-
                 <AppButton @click.prevent="onAddNew" >Add new Image</AppButton>           
                 <AppControlInput control-type="textarea" v-model="editedPost.content">Content</AppControlInput>
                 <AppControlInput control-type="textarea" v-model="editedPost.previewText">Preview Text</AppControlInput>
@@ -42,7 +42,6 @@
 </template>
 <script>
 import dbx from '~/modules/dbx.js'
-
   export default {
     props: {
       post: {
@@ -54,7 +53,6 @@ import dbx from '~/modules/dbx.js'
       return {
         disabled: false,
         fileName: '',
-        thumbnail: null,
         selectedFile: '',
         editedPost: this.post ? { ...this.post
         } : {
@@ -72,16 +70,22 @@ import dbx from '~/modules/dbx.js'
       }
     },
     methods: {
-      isThumbnail(ans) {
-        console.log(this.thumbnail + ' is func')
-
-        this.thumbnail = ans
-
-
+      showImg(){
+        let thumb = null
+        dbx.filesGetThumbnail({
+          path: "/btdvt.squarespace.com__r26545329-1.png",
+          format: 'png',
+          size: 'w480h320',
+          mode:'bestfit'
+          })
+          .then(res => {
+            console.log(res)
+          })
+          .catch(err => {
+            console.log(err)
+          })
       },
       addTo(id, name, path, index) {
-        console.log(this.thumbnail + 'thumb')
-        console.log('add')
         dbx.sharingCreateSharedLink({
             path: path,
             short_url: false
@@ -90,7 +94,7 @@ import dbx from '~/modules/dbx.js'
             let link = ''
             link = data.url.replace("?dl=0", "?raw=1")
             // this.editedPost.images.push({id: id, name: name, path: path, link: link})
-            if (index) {
+            if (index==0) {
               console.log('pass link')
               this.editedPost.images[0].name = name
               this.editedPost.images[0].path = path
@@ -103,13 +107,10 @@ import dbx from '~/modules/dbx.js'
               this.editedPost.images[index].link = link
               this.editedPost.images[index].path = path
             }
-
-
           })
           .catch((err) => {
             console.log(err)
           })
-        console.log(this.editedPost.images)
       },
       onFileSelected(event) {
         this.selectedFile = event.target.files[0];
@@ -117,7 +118,6 @@ import dbx from '~/modules/dbx.js'
       },
       onUpload(index) {
         if (this.selectedFile != null) {
-          this.editedPost.thumbnail = ""
           dbx.filesUpload({
               contents: this.selectedFile,
               path: '/' + this.fileName,
@@ -132,8 +132,7 @@ import dbx from '~/modules/dbx.js'
         }
       },
       onRemove(index) {
-        // console.log(this.thumbnail + " thumb")
-        // console.log(this.selectedFile + "file")
+ 
         if (index === 0) {
           console.log(index + ' in')
           this.selectedFile = ''
@@ -143,17 +142,12 @@ import dbx from '~/modules/dbx.js'
           this.editedPost.images[0].id = ''
 
         } else {
-          console.log('removed splice')
-          console.log(index)
-          console.log(this.editedPost.images.length)
+
           if (this.editedPost.images.length > 2 || index > 0) {
             this.editedPost.images.splice(index, 1);
           }
         }
 
-
-
-        console.log(this.editedPost.images)
       },
       onAddNew() {
         this.editedPost.images.push({
@@ -162,7 +156,6 @@ import dbx from '~/modules/dbx.js'
           link: '',
           path: ''
         })
-
       },
       onSave() {
         //Save Posts
