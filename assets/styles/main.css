@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+body{
+  font-family: 'Lato', Arial, Helvetica, sans-serif
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

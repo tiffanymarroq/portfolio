@@ -8,7 +8,6 @@
 </template>
 <script>
 export default {
-
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts
@@ -16,9 +15,6 @@ export default {
   }, 
 }
 </script>
-
-
-
 <style scoped>
   .intro {
   height: 300px;

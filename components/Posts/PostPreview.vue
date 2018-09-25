@@ -1,11 +1,15 @@
 <template>
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview">
     <article>
-      <div class="post-content">
-        <h1>{{title}}</h1>
+      <!-- <div class="post-content">
+        <h1 class="post-title">{{title}}</h1>
         <p>{{previewText}}</p>
-      </div>
-      <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div>
+      </div> -->
+        <div class="ratio">
+          <img v-lazy="thumbnail" alt=""  class="ratio__content">
+        </div>
+      
+      <!-- <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div> -->
     </article>
   </nuxt-link>
 </template>
@@ -94,6 +98,29 @@ a {
 a:hover .post-content,
 a:active .post-content {
   background-color: #ccc;
+}
+.post-title{
+  text-transform: uppercase;
+}
+
+.ratio{
+  position: relative;
+  display: block;
+
+}
+.ratio::before{
+  content: '';
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  background: #333;
+}
+.ratio__content{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 </style>
 
