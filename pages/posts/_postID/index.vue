@@ -3,7 +3,7 @@
         <section class="post" >
             <h1 class="post-title">{{loadedPost.title}}</h1>
             <p class="post-tags">{{loadedPost.tags}}</p>
-            <a target="_blank" v-show="loadedPost.url != null" :href="loadedPost.url">Live Site</a>
+            <a target="_blank" v-show="loadedPost.url != ''" :href="loadedPost.url">Live Site</a>
             <!-- <div class="post-details">
                 <div class="post-detail">Last updating on {{loadedPost.updatedDate | date}}</div>
                 <div class="post-detail">Written by {{loadedPost.author}}</div>
