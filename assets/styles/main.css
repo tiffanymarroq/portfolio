@@ -2,6 +2,11 @@
 body{
   font-family: 'Lato', Arial, Helvetica, sans-serif
 }
+.large-container{
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right:auto;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div >
     <TheHeader @sidenavToggle="displaySidenav = !displaySidenav"/>
     <TheSideNav
         :show="displaySidenav"
         @close="displaySidenav = false" />
-    <nuxt/>
+    <nuxt class="default" />
   </div>
 </template>
 
@@ -34,5 +34,9 @@ export default {
   }
   body{
     margin: 0;
+  }
+  .default{
+    max-width: 1200px;
+    margin: 0 auto;
   }
 </style>

@@ -66,6 +66,8 @@ export default {
   box-shadow: 0 2px 2px #ccc; */
   background-color: white;
   width: 90%;
+    margin: 10px;
+  
 }
 .post-preview:hover{
   border-radius: 5px;
@@ -79,7 +81,6 @@ a {
 @media (min-width: 850px) {
   .post-preview {
     width: 500px;
-    margin: 10px;
   }
 }
 

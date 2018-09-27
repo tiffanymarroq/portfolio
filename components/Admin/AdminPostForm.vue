@@ -2,6 +2,10 @@
     <form @submit.prevent="onSave">
                 <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
+                <AppControlInput v-model="editedPost.tags">Tags</AppControlInput>
+                <AppControlInput v-model="editedPost.url">Site Url</AppControlInput>
+                
+                <h1>Thumbnail</h1>
                 {{editedPost.images[0].name}}
                 <input
                     id="thumbnail-file"
@@ -60,12 +64,14 @@ import dbx from '~/modules/dbx.js'
           title: "",
           content: "",
           previewText: "",
+          tags:"",
           images: [{
             name: '',
             link: '',
             path: '',
             id: ''
-          }]
+          }],
+          url:""
         }
       }
     },

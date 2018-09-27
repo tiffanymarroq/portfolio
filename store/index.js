@@ -44,7 +44,7 @@ const createStore = () => {
                     state.id = null;
                     state.id = id;
                     localStorage.setItem('postID', id);
-                    console.log(state.id + ' store get');
+                    // console.log(state.id + ' store get');
             },
         },
         actions:{
@@ -94,25 +94,6 @@ const createStore = () => {
             },
             setPosts(vuexContext, posts){
                 vuexContext.commit('setPosts', posts)
-            },
-            uploadImage(vuexContext, file){
-                console.log(file.name)
-                dbx.filesUpload({contents: file, path: '/' + file.name, autorename: true})
-                .then(function(response) {
-                    console.log(response);
-                })
-                .catch(function(error) {
-                    console.error(error);
-                });
-                
-                dbx.filesListFolder({path: ''})
-                .then(function(response) {
-                    console.log('in')
-                    console.log(response);
-                })
-                .catch(function(error) {
-                    console.log(error);
-                });
             },
             deleteImage(vuexContext,file){
                 // dbx.filesDelete({path: '/' + file.name});
@@ -198,24 +179,12 @@ const createStore = () => {
             },
         },
         getters: {
-
-
             loadedPosts(state) {
                 return state.loadedPosts;
             },
             isAuthenticated(state){
                 return state.token != null;
             },
-            currentPost(state){
-                if(process.client ){
-
-                    state.id = localStorage.getItem('postID');
-                }
-                
-                console.log(state.id + ' store get')
-                return state.id
-            }
-            
         }
     })
 }
