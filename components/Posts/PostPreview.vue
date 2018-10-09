@@ -7,6 +7,9 @@
       </div> -->
         <div class="ratio">
           <img v-lazy="thumbnail" alt=""  class="ratio__content">
+          <div class="post-title">
+           <h1>{{title}}</h1> 
+          </div>
         </div>
       
       <!-- <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div> -->
@@ -58,7 +61,6 @@ export default {
 
 }
 </script>
-
 <style scoped>
 .post-preview {
   /* border: 1px solid #ccc;
@@ -66,13 +68,14 @@ export default {
   box-shadow: 0 2px 2px #ccc; */
   background-color: white;
   width: 90%;
-    margin: 10px;
-  
+  margin: 10px;
 }
-.post-preview:hover{
+
+.post-preview:hover {
   border-radius: 5px;
   box-shadow: 0 2px 2px #ccc;
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -80,7 +83,7 @@ a {
 
 @media (min-width: 850px) {
   .post-preview {
-    width: 500px;
+    width: 300px;
   }
 }
 
@@ -96,39 +99,57 @@ a {
   text-align: center;
 }
 
+.post-title {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  background: rgba(0, 0, 0, .7);
+  color: #fff;
+  transform: translateY(100px);
+}
+
+img:hover {
+  transform: scale(1.2);
+  transition-duration: 2s;
+}
+
+.ratio:hover .post-title {
+  transform: translateY(0);
+  transition-duration: .8s;
+  
+}
+
 a:hover .post-content,
 a:active .post-content {
   background-color: #ccc;
 }
-.post-title{
+
+.post-title {
   text-transform: uppercase;
 }
 
-.ratio{
+.ratio {
   position: relative;
   display: block;
-
+  overflow: hidden;
 }
-.ratio::before{
+
+.ratio::before {
   content: '';
   display: block;
   width: 100%;
   padding-bottom: 100%;
   background: #333;
 }
-.ratio__content{
+
+.ratio__content {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
+
 </style>
-
-
-
-
-
-
-
 

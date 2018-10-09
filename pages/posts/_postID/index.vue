@@ -76,6 +76,8 @@ export default {
 }
 .post-tags{
   color: #777;
+  text-transform: capitalize;
+  font-size: .75rem;
 }
 .post-details {
   padding: 10px;

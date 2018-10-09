@@ -47,6 +47,7 @@ export default {
     .existing-posts h1 {
     text-align: center;
     }
+    
 </style>
 
 

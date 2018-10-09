@@ -26,7 +26,6 @@
                   {{img.name}}
  
                   <input  type="file" v-bind="$attrs"
-                    @isThumb = "thumbnail = true"
                     @change = "onFileSelected" 
                     v-show = "img.name == ''">
                     <br>
@@ -76,21 +75,6 @@ import dbx from '~/modules/dbx.js'
       }
     },
     methods: {
-      showImg(){
-        let thumb = null
-        dbx.filesGetThumbnail({
-          path: "/btdvt.squarespace.com__r26545329-1.png",
-          format: 'png',
-          size: 'w480h320',
-          mode:'bestfit'
-          })
-          .then(res => {
-            console.log(res)
-          })
-          .catch(err => {
-            console.log(err)
-          })
-      },
       addTo(id, name, path, index) {
         dbx.sharingCreateSharedLink({
             path: path,

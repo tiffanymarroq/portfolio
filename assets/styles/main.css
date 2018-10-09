@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
-body{
-  font-family: 'Lato', Arial, Helvetica, sans-serif
+/* @import url('https://fonts.googleapis.com/css?family=Lato'); */
+body, html{
+  height: 100%;
+  width: 100%;
 }
+body{
+  font-family: 'Nunito', Arial, Helvetica, sans-serif;
+}
+
 .large-container{
   max-width: 1200px;
   margin-left: auto;
@@ -13,3 +18,5 @@ body{
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
+
+

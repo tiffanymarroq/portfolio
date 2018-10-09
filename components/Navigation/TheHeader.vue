@@ -8,7 +8,7 @@
     <div class="spacer"></div>
     <div class="navigation-items">
       <ul class="nav-list">
-        <li class="nav-item"><nuxt-link to="/posts">Work</nuxt-link></li>
+        <li class="nav-item"><nuxt-link to="/">Projects</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/admin">Admin</nuxt-link></li>
       </ul>
@@ -41,7 +41,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: black;
+  background-color: white;
   z-index: 100;
   box-sizing: border-box;
   padding: 0 20px;
@@ -54,7 +54,7 @@ export default {
 
 .logo a {
   text-decoration: none;
-  color: white;
+  color: #000;
 }
 
 .spacer {
@@ -84,7 +84,7 @@ export default {
 
 .nav-item a {
   text-decoration: none;
-  color: white;
+  color: #000;
 }
 
 .nav-item a:hover,
