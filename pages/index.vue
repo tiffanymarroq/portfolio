@@ -25,6 +25,7 @@ export default {
 }
 
 #intro{
+  position: relative;
   height: 500px;
   width: 100%;
   background: rgba(0,0,0,.6);

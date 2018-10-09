@@ -87,12 +87,6 @@ a {
   }
 }
 
-.post-thumbnail {
-  width: 100%;
-  height: 500px;
-  background-position: center;
-  background-size: cover;
-}
 
 .post-content {
   padding: 10px;
@@ -107,13 +101,11 @@ a {
   background: rgba(0, 0, 0, .7);
   color: #fff;
   transform: translateY(100px);
+  transition-duration: .8s;  
 }
-
-
 .ratio:hover .post-title {
   transform: translateY(0);
   transition-duration: .8s;
-  
 }
 
 a:hover .post-content,
@@ -128,7 +120,10 @@ a:active .post-content {
 .ratio {
   position: relative;
   display: block;
+  width: 100%;
+  height: 200px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .ratio::before {
@@ -142,10 +137,10 @@ a:active .post-content {
 .ratio__content {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  /* left: 0; */
+  max-width: initial;
 }
+
 
 </style>
 

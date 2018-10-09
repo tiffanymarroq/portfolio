@@ -5,12 +5,14 @@
         :show="displaySidenav"
         @close="displaySidenav = false" />
     <nuxt class="default" />
+    <Footer />
   </div>
 </template>
 
 <script>
   import TheHeader from '@/components/Navigation/TheHeader'
   import TheSideNav from '@/components/Navigation/TheSideNav'
+  import Footer from '@/components/Footer/Footer'
   
 
 export default {
@@ -21,7 +23,8 @@ export default {
   },
   components:{
     TheHeader,
-    TheSideNav
+    TheSideNav,
+    Footer
   },
   // middleware: 'log',
 }
