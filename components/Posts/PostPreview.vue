@@ -109,10 +109,6 @@ a {
   transform: translateY(100px);
 }
 
-img:hover {
-  transform: scale(1.2);
-  transition-duration: 2s;
-}
 
 .ratio:hover .post-title {
   transform: translateY(0);
