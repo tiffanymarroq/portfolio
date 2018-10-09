@@ -39,7 +39,8 @@ export default {
     margin: 0;
   }
   .default{
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
+    height: 100vh ;
   }
 </style>
