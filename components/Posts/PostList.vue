@@ -40,7 +40,8 @@ export default {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        margin: 50px auto;
+        margin: 50px 0;
+
         /* margin-bottom: 100px ; */
     }
 </style>
