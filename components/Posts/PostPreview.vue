@@ -1,19 +1,24 @@
 <template>
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview" :class="{adminPost: isAdmin}">
     <article>
-        
-        <div class="ratio" >
-            <h1 class="post-heading">{{title}}</h1>
-          
-          <img v-lazy="thumbnail" alt=""  class="ratio__content">
-          <div class="post-title">
-            <p>{{previewText}}</p>
-          </div>  
-        
+
+      <div class="ratio">
+        <div class="post-heading">
+          <h1 v-show="isAdmin==false" class="post-title">{{title}}</h1>
+          <h1 v-show="isAdmin==false" class="post-completed">{{dateCompleted}}</h1>
         </div>
+        <img v-lazy="thumbnail" alt="" class="ratio__content">
+        <div class="post-text">
+          <h1  v-if="isAdmin">{{title}}</h1>
+
+          <p v-else>{{previewText}}</p>
+        </div>
+
+      </div>
     </article>
   </nuxt-link>
 </template>
+
 
 <script>
 export default {
@@ -38,6 +43,10 @@ export default {
         thumbnail: {
             type: String,
             required: true
+        },
+        dateCompleted: {
+          type: String,
+          required: true
         }
     },
     computed: {
@@ -62,7 +71,7 @@ export default {
 <style scoped>.post-preview {
   background-color: white;
   width: 90%;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 a {
@@ -76,7 +85,8 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
-.adminPost .post-title{
+.adminPost .post-text{
+  text-transform: uppercase;
   transform: translateY(0px);
   
 
@@ -91,33 +101,34 @@ a {
   }
 }
 .post-heading{
-  /* margin-left:10px; */
+  display: inline-block;
+  width: 100%;
+}
+.post-completed{
+  /* display: inline-block; */
+  float:right;
+  color: #777;
 }
 .post-content {
   padding: 10px;
   text-align: center;
 }
 
-.post-title {
+.post-text {
   /* opacity: 0; */
   position: absolute;
   bottom: 0;
   text-align: left;
+  padding-left: 20px;
   width: 100%;
   background: rgba(0, 0, 0, .7);
   color: #fff;
   transform: translateY(120px);
   transition-duration: .8s;
 }
-.post-title h1,
-.post-title p{
-  display: inline-block;
-  width: 48%;
-  padding-left: 10px;
-  
-}
 
-.ratio:hover .post-title {
+
+.ratio:hover .post-text {
   transform: translateY(0);
   transition-duration: .8s;
 }
@@ -129,12 +140,14 @@ a:active .post-content {
 
 .post-title {
   text-transform: uppercase;
+  display: inline-block;
+  
 }
 
 .ratio {
   position: relative;
   max-width: 800px;
-  max-height: 400px;
+  max-height: 450px;
   overflow: hidden;
   margin: 0 auto;
 }

@@ -9,6 +9,7 @@
         :thumbnail="post.images[0].link" 
         :title="post.title" 
         :previewText="post.previewText" 
+        :dateCompleted="post.completed"
       />
       
     </section>
