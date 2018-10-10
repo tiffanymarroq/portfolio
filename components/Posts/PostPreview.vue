@@ -1,18 +1,13 @@
 <template>
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview">
     <article>
-      <!-- <div class="post-content">
-        <h1 class="post-title">{{title}}</h1>
-        <p>{{previewText}}</p>
-      </div> -->
         <div class="ratio">
           <img v-lazy="thumbnail" alt=""  class="ratio__content">
           <div class="post-title">
-           <h1>{{title}}</h1> 
+            <h1>{{title}}</h1>
           </div>
+        
         </div>
-      
-      <!-- <div class="post-thumbnail" :style="{backgroundImage: 'url(' + thumbnail + ')'}"></div> -->
     </article>
   </nuxt-link>
 </template>
@@ -61,19 +56,11 @@ export default {
 
 }
 </script>
-<style scoped>
-.post-preview {
-  /* border: 1px solid #ccc;
-  border-radius: 20px;
-  box-shadow: 0 2px 2px #ccc; */
+<style scoped>.post-preview {
   background-color: white;
   width: 90%;
-  margin: 10px;
-}
-
-.post-preview:hover {
-  border-radius: 5px;
-  box-shadow: 0 2px 2px #ccc;
+  margin-bottom: 30px;
+  /* padding: 30px ; */
 }
 
 a {
@@ -83,10 +70,9 @@ a {
 
 @media (min-width: 850px) {
   .post-preview {
-    width: 300px;
+    width: 70%;
   }
 }
-
 
 .post-content {
   padding: 10px;
@@ -94,15 +80,17 @@ a {
 }
 
 .post-title {
+  /* opacity: 0; */
   position: absolute;
   bottom: 0;
   text-align: center;
   width: 100%;
   background: rgba(0, 0, 0, .7);
   color: #fff;
-  transform: translateY(100px);
-  transition-duration: .8s;  
+  transform: translateY(120px);
+  transition-duration: .8s;
 }
+
 .ratio:hover .post-title {
   transform: translateY(0);
   transition-duration: .8s;
@@ -119,27 +107,18 @@ a:active .post-content {
 
 .ratio {
   position: relative;
-  display: block;
-  width: 100%;
-  height: 200px;
+  max-width: 800px;
+  max-height: 400px;
   overflow: hidden;
   margin: 0 auto;
 }
-
-.ratio::before {
-  content: '';
-  display: block;
-  width: 100%;
-  padding-bottom: 100%;
-  background: #333;
-}
-
-.ratio__content {
-  position: absolute;
-  top: 0;
-  /* left: 0; */
+.ratio__content{
   max-width: initial;
+  
 }
+
+
+
 
 
 </style>
