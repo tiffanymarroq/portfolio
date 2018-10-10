@@ -79,8 +79,8 @@ a {
   color: black;
 }
 .adminPost{
-  max-width: 300px!important;
-  /* max-height: 250px; */
+  max-width: 300px! important;
+  max-height: 200px;
   margin: 10px 0 ;
   margin-left: auto;
   margin-right: auto;
@@ -90,6 +90,9 @@ a {
   transform: translateY(0px);
   
 
+}
+.adminPost.ratio {
+  max-height: 200px;
 }
 @media (min-width: 850px) {
   .post-preview {
@@ -121,7 +124,7 @@ a {
   text-align: left;
   padding-left: 20px;
   width: 100%;
-  height: 40px;
+  /* height: 40px; */
   background: rgba(0, 0, 0, .7);
   color: #fff;
   transform: translateY(120px);

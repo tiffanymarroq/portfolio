@@ -10,9 +10,14 @@
           btn-style="inverted"
           style="margin-left: 10px"
           @click="isLogin = !isLogin">Switch to {{ isLogin ? 'Signup' : 'Login' }}</AppButton>
+          
       </form>
-    </div>
+      <br>
     <AppButton  @click="$router.push('/')">Home</AppButton>
+      
+      
+    </div>
+    
   </div>
 </template>
 
