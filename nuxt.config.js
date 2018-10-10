@@ -18,7 +18,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Nunito'}
+      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Nunito'},
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.3.1/css/all.css'}
     ]
   },
 

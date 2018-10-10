@@ -3,7 +3,11 @@
     <section id="intro">
       <div id="intro-text">
         <h1>Front-End Developer</h1>
-        <p>links</p>
+        <ul class="social-media">
+          <li><i class="fab fa-github fa-2x" ></i></li>
+          <li><i class="fab fa-linkedin fa-2x"></i></li>
+          <li><i class="fab fa-twitter fa-2x"></i></li>
+        </ul>
       </div>
     </section>
     <PostList :posts="loadedPosts" />
@@ -47,5 +51,11 @@ export default {
   flex-wrap: wrap;
   align-items: left;
   justify-content: left;
+}
+
+.social-media li{
+  display: inline-block;
+  margin-left: 10px;
+
 }
 </style>

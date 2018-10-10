@@ -121,6 +121,7 @@ a {
   text-align: left;
   padding-left: 20px;
   width: 100%;
+  height: 40px;
   background: rgba(0, 0, 0, .7);
   color: #fff;
   transform: translateY(120px);
