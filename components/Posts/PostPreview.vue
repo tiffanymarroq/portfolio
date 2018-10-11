@@ -1,12 +1,12 @@
 <template>
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview" :class="{adminPost: isAdmin}">
     <article>
-
-      <div class="ratio">
-        <div class="post-heading">
+              <div class="post-heading">
           <h1 v-show="isAdmin==false" class="post-title">{{title}}</h1>
           <h1 v-show="isAdmin==false" class="post-completed">{{dateCompleted}}</h1>
         </div>
+      <div class="ratio">
+
         <img v-lazy="thumbnail" alt="" class="ratio__content">
         <div class="post-text">
           <h1  v-if="isAdmin">{{title}}</h1>
@@ -68,10 +68,12 @@ export default {
 
 }
 </script>
-<style scoped>.post-preview {
+<style scoped>
+.post-preview {
   background-color: white;
-  width: 90%;
+  width: 100%;
   margin-bottom: 50px;
+
 }
 
 a {
@@ -96,7 +98,7 @@ a {
 }
 @media (min-width: 850px) {
   .post-preview {
-    width: 70%;
+    /* width: 60%; */
   }
   .adminPost{
   margin: 10px  ;
@@ -106,6 +108,7 @@ a {
 .post-heading{
   display: inline-block;
   width: 100%;
+
 }
 .post-completed{
   /* display: inline-block; */
@@ -150,15 +153,28 @@ a:active .post-content {
 
 .ratio {
   position: relative;
-  max-width: 800px;
-  max-height: 450px;
+  /* max-width: 800px; */
+  max-height: 56.25vh;
   overflow: hidden;
   margin: 0 auto;
+  z-index: 2;
 }
 .ratio__content{
   max-width: initial;
+  position: absolute;
+      top: 0px;
+      left: 0;
+      /* width: 100%; */
+      /* height: 100%; */
   
 }
+.ratio:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: rgba(0,0,0,.3);
+    }
 
 
 

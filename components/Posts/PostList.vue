@@ -33,17 +33,21 @@ export default {
 }
 </script>
 <style scoped>
-    .post-list {
-        /* max-width:900px; */
-        display: flex;
-        padding: 20px;
-        box-sizing: border-box;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        margin: 50px 0;
+.post-list {
+  display: flex;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+   max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 
-        /* margin-bottom: 100px ; */
-    }
+  /* margin-bottom: 100px ; */
+}
+
 </style>
+
 

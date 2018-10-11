@@ -2,7 +2,7 @@
   <div class="home-page">
     <section id="intro">
       <div id="intro-text">
-        <h1>Front-End Developer</h1>
+        <h1>Hello There,</h1>
         <ul class="social-media">
           <li><i class="fab fa-github fa-2x" ></i></li>
           <li><i class="fab fa-linkedin fa-2x"></i></li>

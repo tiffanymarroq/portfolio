@@ -56,8 +56,11 @@ export default {
   padding: 30px;
   text-align: center;
   box-sizing: border-box;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
+   max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .post {
   width: 100%;
