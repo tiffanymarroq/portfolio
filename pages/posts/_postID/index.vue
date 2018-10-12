@@ -2,7 +2,7 @@
     <div class="single-post-page">
         <section class="post" >
             <h1 class="post-title">{{loadedPost.title}}</h1>
-            <p class="post-tags">{{loadedPost.tags}}</p>
+            <p class="post-tags tags">{{loadedPost.tags}}</p>
             <a target="_blank" v-show="loadedPost.url != ''" :href="loadedPost.url">Live Site</a>
             <!-- <div class="post-details">
                 <div class="post-detail">Last updating on {{loadedPost.updatedDate | date}}</div>
@@ -78,9 +78,9 @@ export default {
   text-transform: uppercase
 }
 .post-tags{
-  color: #777;
+  /* color: #777; */
   text-transform: capitalize;
-  font-size: .75rem;
+  font-size: .8rem;
 }
 .post-details {
   padding: 10px;

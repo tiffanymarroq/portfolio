@@ -1,5 +1,5 @@
 <template>
-     <section class="post-list">
+     <section class="large-container post-list">
       <PostPreview
      
         v-for="post in posts"
@@ -40,10 +40,10 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 50px 0;
-   max-width: 1200px;
+  /* margin: 50px 0; */
+   /* max-width: 1200px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
 
   /* margin-bottom: 100px ; */
 }

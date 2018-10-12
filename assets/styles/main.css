@@ -1,11 +1,13 @@
 /* @import url('https://fonts.googleapis.com/css?family=Lato'); */
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+
 body, html{
   height: 100%;
   width: 100%;
   position: relative;
 }
 body{
-  font-family: 'Nunito', Arial, Helvetica, sans-serif;
+  font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
 }
 
 img{
@@ -30,10 +32,26 @@ ul{
   margin-right:auto;
 }
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+  /* transition: opacity .5s; */
+  opacity: 1;
+  transform: translate(0, 0);
+  transition-duration: .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to  {
+  /* opacity: 0; */
   opacity: 0;
+  transform: translate(2em, 0);
+  transition-duration: .5s;
+  
+}
+.title{
+  color: #000;
+}
+.subtitle, .tags{
+  color: #8F8F8F;
 }
 
+::selection {
+  background: #ffb7b7; /* WebKit/Blink Browsers */
+}
 

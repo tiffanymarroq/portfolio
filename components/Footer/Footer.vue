@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <p>Tiffany Marroquin</p>
+        <p>© Tiffany Marroquin</p>
     </div>
 </template>
 
