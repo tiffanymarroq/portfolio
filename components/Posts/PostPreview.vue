@@ -97,12 +97,11 @@ a {
   max-height: 200px;
 }
 @media (min-width: 850px) {
-  .post-preview {
-    /* width: 60%; */
-  }
   .adminPost{
-  margin: 10px  ;
-
+    margin: 10px;
+  }
+  .post-preview{
+    width: 65%;
   }
 }
 .post-heading{
@@ -118,6 +117,10 @@ a {
 .post-content {
   padding: 10px;
   text-align: center;
+}
+.ratio:hover .ratio__content{
+  transform: scale(1.2);
+  transition-duration: 3s;
 }
 
 .post-text {
@@ -154,12 +157,14 @@ a:active .post-content {
 .ratio {
   position: relative;
   /* max-width: 800px; */
-  max-height: 56.25vh;
+  /* max-height: 56.25%; */
   overflow: hidden;
   margin: 0 auto;
   z-index: 2;
 }
 .ratio__content{
+  transform: scale(1);
+  transition-duration: 1s;
   max-width: initial;
   position: absolute;
       top: 0px;

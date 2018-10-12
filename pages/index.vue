@@ -2,11 +2,13 @@
   <div class="home-page">
     <section id="intro">
       <div id="intro-text">
-        <h1>Hello There,</h1>
+        <h1>Hello There!</h1>
+        <h1>Front-End developer from NYC helping startups build digital experiences</h1>
         <ul class="social-media">
-          <li><i class="fab fa-github fa-2x" ></i></li>
-          <li><i class="fab fa-linkedin fa-2x"></i></li>
-          <li><i class="fab fa-twitter fa-2x"></i></li>
+          <li><a href="https://github.com/tiffanymarroq"><i class="fab fa-github fa-2x" ></i></a></li>
+          <li><a href=""><i class="fab fa-codepen fa-2x"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/tiffany-marroquin/"><i class="fab fa-linkedin fa-2x"></i></a></li>
+          <!-- <li><a href="https://www.instagram.com/tmqpix/"><i class="fab fa-instagram fa-2x"></i></a></li> -->
         </ul>
       </div>
     </section>
@@ -23,17 +25,10 @@ export default {
 }
 </script>
 <style scoped>
-
-@media (min-width: 768px) {
-
-}
-
 #intro{
   position: relative;
   height: 500px;
   width: 100%;
-  background: rgba(0,0,0,.6);
-  color: #fff;
 
 }
 #intro-text{
@@ -55,7 +50,7 @@ export default {
 
 .social-media li{
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 15px;
 
 }
 </style>
