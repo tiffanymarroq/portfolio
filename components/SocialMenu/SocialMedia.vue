@@ -25,7 +25,7 @@
 
 }
 li i:hover{
-  color: #ffb7b7;
+  color: #AEEEEE;
 }
 </style>
 

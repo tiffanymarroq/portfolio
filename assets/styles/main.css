@@ -52,6 +52,7 @@ ul{
 }
 
 ::selection {
-  background: #ffb7b7; /* WebKit/Blink Browsers */
+  /* background: #ffb7b7; WebKit/Blink Browsers */
+  background: #AFEEEE;
 }
 
