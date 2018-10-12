@@ -40,12 +40,6 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  /* margin: 50px 0; */
-   /* max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto; */
-
-  /* margin-bottom: 100px ; */
 }
 
 </style>

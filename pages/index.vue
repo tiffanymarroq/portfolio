@@ -5,6 +5,9 @@
         <h1 class="title">Hello There!</h1>
         <h1 class="subtitle">Front-End developer from NYC helping startups build digital experiences</h1>
         <SocialMedia />
+        <br>
+      <p class="subtitle">See Work</p>
+        
 
       </div>
     </section>
@@ -27,7 +30,8 @@ export default {
 <style scoped>
 #intro{
   position: relative;
-  height: 400px;
+  min-height: 400px;
+  max-height: 747px;
   width: 100%;
   margin: 0 20px;
   
