@@ -74,55 +74,67 @@ export default {
   width: 100%;
   margin-bottom: 50px;
   cursor: pointer;
-
 }
 
 a {
   text-decoration: none;
   color: black;
 }
-.adminPost{
-  max-width: 300px! important;
+
+.adminPost {
+  max-width: 300px ! important;
   max-height: 200px;
-  margin: 10px 0 ;
+  margin: 10px 0;
   margin-left: auto;
   margin-right: auto;
 }
-.adminPost .post-text{
+
+.adminPost .post-text {
   text-transform: uppercase;
   transform: translateY(0px);
-  
-
 }
+
 .adminPost.ratio {
   max-height: 200px;
 }
+
 @media (min-width: 850px) {
-  .adminPost{
+  .adminPost {
     margin: 10px;
   }
-  .post-preview{
+  .post-preview {
     width: 65%;
   }
+  .post-completed {
+    float: right !important;
+  }
 }
-.post-heading{
+
+.post-heading {
   display: inline-block;
   width: 100%;
-
 }
-.post-completed{
+
+.post-completed {
   /* display: inline-block; */
-  float:right;
+  float: none;
   color: #777;
 }
+
 .post-content {
   padding: 10px;
   text-align: center;
 }
-.ratio:hover .ratio__content{
+
+.ratio:hover .ratio__content {
   transform: scale(1.2);
   transition-duration: 3s;
 }
+
+/* .post-title {
+  margin: 0;
+  margin-bottom: 10px;
+} */
 
 .post-text {
   /* opacity: 0; */
@@ -138,7 +150,6 @@ a {
   transition-duration: .8s;
 }
 
-
 .ratio:hover .post-text {
   transform: translateY(0);
   transition-duration: .8s;
@@ -152,7 +163,6 @@ a:active .post-content {
 .post-title {
   text-transform: uppercase;
   display: inline-block;
-  
 }
 
 .ratio {
@@ -163,25 +173,25 @@ a:active .post-content {
   margin: 0 auto;
   z-index: 2;
 }
-.ratio__content{
+
+.ratio__content {
   transform: scale(1);
   transition-duration: 1s;
   max-width: initial;
   position: absolute;
-      top: 0px;
-      left: 0;
-      /* width: 100%; */
-      /* height: 100%; */
-  
+  top: 0px;
+  left: 0;
+  /* width: 100%; */
+  /* height: 100%; */
 }
-.ratio:before {
-      content: '';
-      display: block;
-      width: 100%;
-      padding-bottom: 56.25%;
-      background: rgba(0,0,0,.3);
-    }
 
+.ratio:before {
+  content: '';
+  display: block;
+  width: 100%;
+  padding-bottom: 56.25%;
+  background: rgba(0, 0, 0, .3);
+}
 
 
 

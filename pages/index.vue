@@ -1,17 +1,20 @@
 <template>
-  <div class="home-page">
+  <div class="home-page smooth">
     <section id="intro">
       <div id="intro-text">
         <h1 class="title">Hello There!</h1>
         <h1 class="subtitle">Front-End developer from NYC helping startups build digital experiences</h1>
         <SocialMedia />
         <br>
-      <p class="subtitle">See Work</p>
+      <!-- <a  class="" href="#work"><p class="subtitle">See Work</p></a> -->
         
 
       </div>
     </section>
+    <div id="work">
     <PostList :posts="loadedPosts" />
+      
+    </div>
   </div>
 </template>
 <script>
@@ -24,6 +27,9 @@ export default {
   },
   components:{
     SocialMedia
+  },
+  methods:{
+
   } 
 }
 </script>

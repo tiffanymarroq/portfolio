@@ -1,47 +1,50 @@
 <template>
   <div class="about-page large-container">
-    <div class="flex">
+    <div class="">
       <h1 class="title">About Me</h1>
       <div class="text">
         <p>Hello, I'm a developer from NYC. Graduated from Binghamton University with a degree in Mathematics. Like most graduates,
           or maybe just me 😅, I did not have a specific path I wanted to do as a career. At the end of 2017, I decided to
           take it upon myself to learn web development/applications. To push myself in the field, I decided to work as a
-          freelance developer. And Here we are! 🤗</p>
+          freelance developer. And here we are! 🤗</p>
       </div>
-
+      <hr>
       <h1 class="title">Things I know</h1>
-      <div class="text">
-        <ul>
-          <li>Node JS</li>
-          <li>Vue</li>
-          <li>React</li>
-          <li>CSS/SCSS</li>
-          <li>Gulp Workflow</li>
-          <li>JS</li>
-        </ul>
-        <ul>
-          <li>Marketing Strategies</li>
-          <li>Data Collecting</li>
-          <li>Management</li>
-          <li>Teamwork</li>
+      <div class="text skills">
+        <ul class="flex">
+          <li><p>Node JS</p><i class="fab fa-node-js fa-2x"></i></li>
+          <li><p>Vue JS</p><i class="fab fa-vuejs  fa-2x"></i></li>
+          <li><p>CSS</p><i class="fab fa-css3-alt  fa-2x"></i></li>
+          <li><p>SASS</p><i class="fab fa-sass  fa-2x"></i></li>
+          <li><p>Gulp JS</p><i class="fab fa-gulp  fa-2x"></i></li>
+          <li><p>Javascript</p><i class="fab fa-js  fa-2x"></i></li>
+          <li><p>Python</p><i class="fab fa-python  fa-2x"></i></li>
+          <!-- <li><i class="fab fa-github  fa-2x"></i>git</li> -->
         </ul>
       </div>
-
+      <hr>
       <h1 class="title">Projects</h1>
       <div class="text">
         <ul>
-          <li>Wordpress Template</li>
-          <li>Vue Random Selector</li>
-          <li>Json Filter on Hierarchy</li>
+          <li><a href="https://github.com/tiffanymarroq/portfolio" target="_blank">Portfolio Site</a>
+          <p>Built my portfolio site on Nuxt JS, which is derived from Vue Js. It uses Dropbox as a content manager, Vuex, and modules </p>
+          </li>
+          <li><a href="https://github.com/tiffanymarroq/store-wp-theme" target="_blank">Wordpress Template</a>
+            <p>Developed Wordpress Store theme from scratch using SCSS, Gulp, and Wordpress plugins</p>
+          </li>
+          <li><a href="https://github.com/tiffanymarroq/item-randomizer" target="_blank">Random Selector</a>
+            <p>Created an input randomizer using VueJS. Add/Delete items</p>
+          </li>
         </ul>
       </div>
-      <div class="title">
+      <hr>
+      
+      <div class="title facts">
         <h1>Fun Facts</h1>
         <p class="subtitle">Hover text</p>
 
       </div>
-
-      <div class="text">
+      <div class="text facts">
         <ul>
           <li>
             <p>Dogs > Cats</p>
@@ -104,16 +107,24 @@ export default {
 </script>
 
 <style scoped>
+    .contact{
+      text-align: center;
+    }
+    .contact p {
+      width: 100%;
+    }
     .about-page{
         text-align: center;
         padding: 30px;
+
+        
     }
     .title,.text{
       display: block;
       text-align: left;
     }
     .title{
-      width: 40%;
+      /* width: 40%; */
       margin: 0;
       margin-bottom: 20px;
       
@@ -122,41 +133,67 @@ export default {
       margin: 0;
     }
     p{
-      margin: 0;
+      margin: 0;  
+    }
+    p,li{
+      font-size: 1.2rem;
+      cursor: default;
+      /* display:inline-block; */
+      width:fit-content;
       
     }
     li{
       position: relative;
       margin: 10px 0 ;
-      width: auto;
+      /* width: auto; */
     }
-    li:hover img{
+    .facts li:hover img{
       display: block;
+    }
+    .facts  li:hover p {
+      color: #fff;
+    }
+    .facts{
+      text-align: center;
+      
+    }
+    .skills li{
+      width: 80px;
+    }
+    .skills li:hover p{
+      opacity: 1;
+
+    }
+    li i:hover{
+      color: #AEEEEE;
+    }
+    .skills p {
+      opacity: 0;
+      text-align: center;
+      width: 100%
     }
     img{
       display: none;
       position: absolute;
-      top:-50px;
-      right:0;
-      z-index: 3;
+      top:0px;
+      /* right:0; */
+      z-index: -1;
       width: auto;
       max-width: 350px;
       max-height: 300px;
     }
     .text {
-      width:59%;
-      
+      /* width:59%; */
       margin-bottom: 20px;
     }
     .contact{
       position: relative;
     }
     .flex{
-      display:flex;
-      justify-content: flex-start;
-      align-content: flex-start;
-      flex-wrap: wrap;
-      
+      display: flex;
+      justify-content: center;
+      text-align: center;
     }
+
 </style>
 

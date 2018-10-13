@@ -65,6 +65,9 @@ ul,li,a{
   text-decoration: none;
   list-style-type: none;
 }
+p,li{
+  /* font-size: 1.2rem; */
+}
 ul{
   padding: 0;
 }
@@ -100,5 +103,18 @@ a, i{
 ::selection {
   /* background: #ffb7b7; WebKit/Blink Browsers */
   background: #AFEEEE;
+}
+a,i{
+  color: #1762a1;
+}
+
+.smooth {
+	scroll-behavior: smooth;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 

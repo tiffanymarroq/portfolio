@@ -2,7 +2,7 @@
      <section class="large-container post-list">
       <PostPreview
      
-        v-for="post in posts"
+        v-for="post in posts.slice().reverse()"
         :key="post.id"
         :id="post.id" 
         :is-admin="isAdmin" 

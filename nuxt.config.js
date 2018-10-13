@@ -26,10 +26,10 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#333', height: '4px', duration: 5000 },
+  loading: { color: '#1762a1', height: '4px', duration: 5000 },
   loadingIndicator: {
     name: 'circle',
-    color: '#333'
+    color: '#1762a1'
   },
 
   /*
