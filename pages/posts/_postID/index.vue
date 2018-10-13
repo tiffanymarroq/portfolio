@@ -105,11 +105,11 @@ export default {
     flex-direction: row;
   }
   .post-name,.post-content{
-    width: 100%;
+    width: 50% !important;
   }
 }
   .post-name,.post-content{
-    width: 49% ;
+    width: 100% ;
   }
 .post-detail {
   color: rgb(88, 88, 88);
@@ -127,6 +127,7 @@ export default {
 }
 .post-content{
   text-align: left;
+  margin: 0;
 }
 </style>
 

@@ -107,6 +107,10 @@ export default {
 </script>
 
 <style scoped>
+
+@media (min-width: 768px) {
+
+}
     .contact{
       text-align: center;
     }
@@ -139,7 +143,7 @@ export default {
       font-size: 1.2rem;
       cursor: default;
       /* display:inline-block; */
-      width:fit-content;
+      /* width:fit-content; */
       
     }
     li{
@@ -150,12 +154,10 @@ export default {
     .facts li:hover img{
       display: block;
     }
-    .facts  li:hover p {
-      color: #fff;
-    }
+
     .facts{
       text-align: center;
-      
+
     }
     .skills li{
       width: 80px;
@@ -175,8 +177,8 @@ export default {
     img{
       display: none;
       position: absolute;
-      top:0px;
-      /* right:0; */
+      top:-80px;
+      right:0;
       z-index: -1;
       width: auto;
       max-width: 350px;
