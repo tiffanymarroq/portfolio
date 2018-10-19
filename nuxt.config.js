@@ -83,7 +83,7 @@ module.exports = {
   },
   serverMiddleware: [
     bodyParser.json(),
-    '~/api'
+    '~/api/index' ,
   ],
   generate: {
     routes: function() {
