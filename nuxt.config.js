@@ -87,15 +87,13 @@ module.exports = {
   ],
   generate: {
     routes: function() {
-     return axios.get(databaseURL+'/posts.json')
+     return axios.get('https://blog-86697.firebaseio.com/posts.json')
       .then(res => {
         const routes = []
         for(const key in res.data){
-          routes.push({
-            routes: '/posts/' + key,
-            payload: {postData: res.data[key]}
-          })
+          routes.push('/posts/' + key)
         }
+        console.log(routes)
         return routes
       })
     }

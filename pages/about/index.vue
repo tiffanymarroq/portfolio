@@ -14,11 +14,13 @@
         <ul class="flex">
           <li><p>Node JS</p><i class="fab fa-node-js fa-2x"></i></li>
           <li><p>Vue JS</p><i class="fab fa-vuejs  fa-2x"></i></li>
+          <li><p>React</p><i class="fab fa-react fa-2x"></i></li>
           <li><p>CSS</p><i class="fab fa-css3-alt  fa-2x"></i></li>
           <li><p>SASS</p><i class="fab fa-sass  fa-2x"></i></li>
           <li><p>Gulp JS</p><i class="fab fa-gulp  fa-2x"></i></li>
           <li><p>Javascript</p><i class="fab fa-js  fa-2x"></i></li>
           <li><p>Python</p><i class="fab fa-python  fa-2x"></i></li>
+          <li><p>Wordpress</p><i class="fab fa-wordpress-simple fa-2x"></i></li>
           <!-- <li><i class="fab fa-github  fa-2x"></i>git</li> -->
         </ul>
       </div>
