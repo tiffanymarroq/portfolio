@@ -12,6 +12,8 @@
       </div>
     </section>
     <div id="work">
+      <h1>Database test</h1>
+      <div>{{dbPosts}}</div>
     <PostList :posts="loadedPosts" />
       
     </div>
@@ -23,6 +25,15 @@ export default {
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts
+    },
+    dbPosts(){
+      this.$axios.post('http://localhost:3000/api/posts')
+      .then(datajson => {
+        console.log('in database');
+        console.log(datajson.data);
+        return datajson[0].title;
+      })
+      .catch(err => console.log(err))
     }
   },
   components:{
