@@ -63,6 +63,10 @@ app.get('/posts', function(request, response){
     });
 });
 
+app.listen('80', (localhost) => {
+    console.log('Server started on port 80');
+});
+
 module.exports = {
     path: '/api',
     handler: app

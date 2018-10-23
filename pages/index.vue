@@ -12,8 +12,6 @@
       </div>
     </section>
     <div id="work">
-      <h1>Database test</h1>
-      <div>{{dbPosts}}</div>
     <PostList :posts="loadedPosts" />
       
     </div>
@@ -22,16 +20,23 @@
 <script>
 import SocialMedia from '@/components/SocialMenu/SocialMedia';
 export default {
+  data(){
+    return{
+      title: ''
+    }
+  },
   computed: {
     loadedPosts() {
       return this.$store.getters.loadedPosts
     },
     dbPosts(){
-      this.$axios.post('http://localhost:3000/api/posts')
-      .then(datajson => {
+      this.$axios.get('http://localhost:3000/api/posts')
+      .then(data => {
         console.log('in database');
-        console.log(datajson.data);
-        return datajson[0].title;
+        console.log(data.data);
+        this.title = data.data[0].title;
+        // return datajson[0].title;
+        return data.data;
       })
       .catch(err => console.log(err))
     }
