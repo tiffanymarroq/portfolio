@@ -32,14 +32,5 @@ export default {
 
 
 <style>
-  html{
-    font-family:  Helvetica, sans-serif, sans-serif
-  }
-  body{
-    margin: 0;
-  }
-  .default{
-    margin: 0 auto;
-    min-height: 100vh ;
-  }
+
 </style>

@@ -107,9 +107,6 @@ export default {
   .post-details {
     flex-direction: row;
   }
-  .post-name, .post-content{
-    /* width: 50% !important; */
-  }
 }
   .post-name,.post-content{
     width: 100% ;
@@ -136,7 +133,6 @@ export default {
   line-height: 1.6;
   
 }
-
 .image-content{
   margin-top: 30px;
 }

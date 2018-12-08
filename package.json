@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "cross-env": "^5.0.1",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
     "vue-lazyload": "^1.2.6"
   }
 }

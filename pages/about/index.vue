@@ -8,11 +8,6 @@
           take it upon myself to learn web development/applications. To push myself in the field, I decided to work as a
           freelance developer. And here we are! </p>
       </div>
-
-
-
-
-
     <div class="contact">
       <p>Want to know more? Ask me! You can reach me at
         <a href="mailto:tiffany.marroq@gmail.com">tiffany.marroq@gmail.com </a>
@@ -59,9 +54,6 @@ export default {
 
 <style scoped>
 
-@media (min-width: 768px) {
-
-}
     .contact{
       text-align: center;
     }
@@ -71,8 +63,6 @@ export default {
     .about-page{
         text-align: center;
         padding: 30px;
-
-        
     }
     .about-content{
       max-width: 750px;
@@ -99,8 +89,7 @@ export default {
     p,li{
       font-size: 1.2rem;
       cursor: default;
-      /* display:inline-block; */
-      /* width:fit-content; */
+
       
     }
     li{
@@ -108,39 +97,7 @@ export default {
       margin: 10px 0 ;
       /* width: auto; */
     }
-    .facts li:hover img{
-      display: block;
-    }
-
-    .facts{
-      text-align: center;
-
-    }
-    .skills li{
-      width: 80px;
-    }
-    .skills li:hover p{
-      opacity: 1;
-
-    }
-    li i:hover{
-      color: #AEEEEE;
-    }
-    .skills p {
-      opacity: 0;
-      text-align: center;
-      width: 100%
-    }
-    img{
-      display: none;
-      position: absolute;
-      top:-80px;
-      right:0;
-      z-index: -1;
-      width: auto;
-      max-width: 350px;
-      max-height: 300px;
-    }
+  
     .text {
       /* width:59%; */
       margin-bottom: 20px;
