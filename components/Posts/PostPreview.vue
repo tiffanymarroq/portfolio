@@ -2,8 +2,8 @@
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview" :class="{adminPost: isAdmin}">
     <article>
               <div class="post-heading">
-          <h1 v-show="isAdmin==false" class="post-title">{{title}}</h1>
-          <h1 v-show="isAdmin==false" class="post-completed">{{dateCompleted}}</h1>
+          <!-- <h1 v-show="isAdmin==false" class="post-title">{{title}}</h1> -->
+          <!-- <h1 v-show="isAdmin==false" class="post-completed">{{dateCompleted}}</h1> -->
         </div>
       <div class="ratio">
 

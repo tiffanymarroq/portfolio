@@ -2,9 +2,9 @@
   <div class="home-page smooth">
     <section id="intro">
       <div id="intro-text">
-        <h1 class="title">Hello There!</h1>
-        <h1 class="subtitle">Front-End developer from NYC helping startups build digital experiences</h1>
-        <SocialMedia />
+        <!-- <h1 class="title">Hello There!</h1> -->
+        <h1 class="subtitle"><span>Front-End developer</span> from NYC building digital experiences</h1>
+        <div class="social-media"><SocialMedia /></div>
         <br>
       <!-- <a  class="" href="#work"><p class="subtitle">See Work</p></a> -->
         
@@ -71,7 +71,7 @@ export default {
     transform: translate(-50%, -50%); 
 }
 #intro-text h1{
-  font-size: 2em;
+  font-size: 40px;
   
 }
 .featured-posts {
@@ -93,4 +93,12 @@ export default {
   }
 }
 
+.subtitle {
+  color: #333;
+  text-align: center;
+
+}
+.social-media{
+  text-align: center;
+}
 </style>

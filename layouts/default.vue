@@ -33,7 +33,7 @@ export default {
 
 <style>
   html{
-    font-family: 'Nunito', sans-serif
+    font-family:  Helvetica, sans-serif, sans-serif
   }
   body{
     margin: 0;

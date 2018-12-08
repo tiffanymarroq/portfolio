@@ -4,9 +4,7 @@
                 <AppControlInput v-model="editedPost.title">Title</AppControlInput>
                 <AppControlInput v-model="editedPost.tags">Tags</AppControlInput>
                 <AppControlInput v-model="editedPost.url">Site Url</AppControlInput>
-                <AppControlInput v-model="editedPost.completed">Date Completed</AppControlInput>
-                
-                
+                <AppControlInput v-model="editedPost.completed">Date Completed</AppControlInput>     
                 <h1>Thumbnail</h1>
                 {{editedPost.images[0].name}}
                 <input

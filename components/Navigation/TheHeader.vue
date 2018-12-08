@@ -3,7 +3,7 @@
   <header class="the-header">
     <TheSideNavToggle @toggle="$emit('sidenavToggle')" />
     <div class="logo">
-      <nuxt-link to="/">Tiffany Marroquin</nuxt-link>
+      <nuxt-link to="/"><span class="logo">Tiffany Marroquin</span></nuxt-link>
     </div>
     <div class="spacer"></div>
     <div class="navigation-items">
@@ -54,6 +54,7 @@ export default {
 .logo a {
   text-decoration: none;
   color: #000;
+  font-weight: 700;
 }
 
 .spacer {
@@ -83,7 +84,9 @@ export default {
 
 .nav-item a {
   text-decoration: none;
-  color: #000;
+  color: #777;
+  font-weight: 100;
+  text-transform: uppercase;
 }
 
 /* .nav-item a:hover,

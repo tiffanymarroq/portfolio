@@ -1,79 +1,28 @@
 <template>
   <div class="about-page large-container">
-    <div class="">
+    <div class="about-content">
       <h1 class="title">About Me</h1>
       <div class="text">
         <p>Hello, I'm a developer from NYC. Graduated from Binghamton University with a degree in Mathematics. Like most graduates,
-          or maybe just me 😅, I did not have a specific path I wanted to do as a career. At the end of 2017, I decided to
+          or maybe just me , I did not have a specific path I wanted to do as a career. At the end of 2017, I decided to
           take it upon myself to learn web development/applications. To push myself in the field, I decided to work as a
-          freelance developer. And here we are! 🤗</p>
+          freelance developer. And here we are! </p>
       </div>
-      <hr>
-      <h1 class="title">Things I know</h1>
-      <div class="text skills">
-        <ul class="flex">
-          <li><p>Node JS</p><i class="fab fa-node-js fa-2x"></i></li>
-          <li><p>Vue JS</p><i class="fab fa-vuejs  fa-2x"></i></li>
-          <li><p>React</p><i class="fab fa-react fa-2x"></i></li>
-          <li><p>CSS</p><i class="fab fa-css3-alt  fa-2x"></i></li>
-          <li><p>SASS</p><i class="fab fa-sass  fa-2x"></i></li>
-          <li><p>Gulp JS</p><i class="fab fa-gulp  fa-2x"></i></li>
-          <li><p>Javascript</p><i class="fab fa-js  fa-2x"></i></li>
-          <li><p>Python</p><i class="fab fa-python  fa-2x"></i></li>
-          <li><p>Wordpress</p><i class="fab fa-wordpress-simple fa-2x"></i></li>
-          <!-- <li><i class="fab fa-github  fa-2x"></i>git</li> -->
-        </ul>
-      </div>
-      <hr>
-      <h1 class="title">Projects</h1>
-      <div class="text">
-        <ul>
-          <li><a href="https://github.com/tiffanymarroq/portfolio" target="_blank">Portfolio Site</a>
-          <p>Built my portfolio site on Nuxt JS, which is derived from Vue Js. It uses Dropbox as a content manager, Vuex, and modules </p>
-          </li>
-          <li><a href="https://github.com/tiffanymarroq/store-wp-theme" target="_blank">Wordpress Template</a>
-            <p>Developed Wordpress Store theme from scratch using SCSS, Gulp, and Wordpress plugins</p>
-          </li>
-          <li><a href="https://github.com/tiffanymarroq/item-randomizer" target="_blank">Random Selector</a>
-            <p>Created an input randomizer using VueJS. Add/Delete items</p>
-          </li>
-        </ul>
-      </div>
-      <hr>
-      
-      <div class="title facts">
-        <h1>Fun Facts</h1>
-        <p class="subtitle">Hover text</p>
 
-      </div>
-      <div class="text facts">
-        <ul>
-          <li>
-            <p>Dogs > Cats</p>
-            <img src="~/assets/images/dog-ears.gif" width="219" height="380" frameBorder="0" class="giphy-embed">
-          </li>
-          <li>
-            <p>Tea Drinker</p>
-            <img src="~/assets/images/tea.gif" width="380" height="168" frameBorder="0" class="giphy-embed">
-          </li>
-          <li>
-            <p>Enjoys to Travel</p>
-            <img src="~/assets/images/adventure.gif" width="480" height="192" frameBorder="0" class="giphy-embed">
-          </li>
-        </ul>
-      </div>
-    </div>
+
+
 
 
     <div class="contact">
-      <h1>Want to know more?</h1>
-      <p>Ask me! You can reach me at
-        <a href="mailto:tiffany.marroq@gmail.com">tiffany.marroq@gmail.com 💌</a>
+      <p>Want to know more? Ask me! You can reach me at
+        <a href="mailto:tiffany.marroq@gmail.com">tiffany.marroq@gmail.com </a>
       </p>
-      <p>Have a great {{getDay()}}</p>
+      <!-- <p>Have a great {{getDay()}}</p> -->
       <SocialMedia />
     </div>
   </div>
+    </div>
+  
 </template>
 
 
@@ -125,6 +74,10 @@ export default {
 
         
     }
+    .about-content{
+      max-width: 750px;
+      margin: 0 auto;
+    }
     .title,.text{
       display: block;
       text-align: left;
@@ -133,6 +86,8 @@ export default {
       /* width: 40%; */
       margin: 0;
       margin-bottom: 20px;
+      text-align: center;
+      font-size: 40px;
       
     }
     h1{
@@ -189,6 +144,8 @@ export default {
     .text {
       /* width:59%; */
       margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.6;
     }
     .contact{
       position: relative;

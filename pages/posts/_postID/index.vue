@@ -1,16 +1,17 @@
 <template>
     <div class="single-post-page">
-        <section class="post flex" >
+        <section class="post " >
           <div class="post-name">
             <h1 class="post-title">{{loadedPost.title}}</h1>
-            <p class="post-tags tags">{{loadedPost.tags}}</p>
+            <!-- <p class="post-tags tags">{{loadedPost.tags}}</p> -->
+            <p class="post-content" >{{loadedPost.content}}</p>
+            
             <a target="_blank" v-show="loadedPost.url != ''" :href="loadedPost.url">Live Site</a>
           </div>
             
 
-            <p class="post-content" >{{loadedPost.content}}</p>
         </section>
-        <div v-for="(img,index) in loadedPost.images" v-if="index >= 1" :key="index">
+        <div class="image-content" v-for="(img,index) in loadedPost.images" v-if="index >= 1" :key="index">
           <img v-lazy="img.link" alt="" style="width: 100%; margin: 20px 0 ">
         </div> 
     </div>
@@ -64,9 +65,9 @@ export default {
   box-sizing: border-box;
   /* max-width: 1200px; */
   margin: 0 auto;
-   max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .post {
   width: 100%;
@@ -74,16 +75,18 @@ export default {
 
 @media (min-width: 768px) {
   .post {
-    /* width: 600px; */
+    width: 600px;
     margin: auto; 
   }
 }
 .post-name{
-  text-align: left;
+  text-align: center;
 }
 .post-title {
-  margin: 0;
-  text-transform: uppercase
+  margin-top: 60px;
+  margin-bottom: 40px;
+  text-transform: capitalize;
+  font-size: 40px;
 }
 .post-tags{
   /* color: #777; */
@@ -94,7 +97,7 @@ export default {
   padding: 10px;
   box-sizing: border-box;
   border-bottom: 3px solid #ccc;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -104,8 +107,8 @@ export default {
   .post-details {
     flex-direction: row;
   }
-  .post-name,.post-content{
-    width: 50% !important;
+  .post-name, .post-content{
+    /* width: 50% !important; */
   }
 }
   .post-name,.post-content{
@@ -126,8 +129,16 @@ export default {
   color: salmon;
 }
 .post-content{
-  text-align: left;
+  text-align: center;
   margin: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  
+}
+
+.image-content{
+  margin-top: 30px;
 }
 </style>
 
