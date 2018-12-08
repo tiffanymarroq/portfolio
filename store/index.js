@@ -19,6 +19,9 @@ const createStore = () => {
                     if(post.position == 1){
                         postPosition[0] = post
                     }
+                    if(post.position == null){
+                        postPosition[postPosition.length - 1] = post;
+                    }
                     postPosition[post.position - 1] = post;
                     return postPosition;
                 })

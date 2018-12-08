@@ -87,31 +87,31 @@ import dbx from '~/modules/dbx.js'
     },
     methods: {
       addTo(id, name, path, index) {
-        dbx.sharingCreateSharedLink({
-            path: path,
-            short_url: false
-          })
-          .then((data) => {
-            let link = ''
-            link = data.url.replace("?dl=0", "?raw=1")
-            // this.editedPost.images.push({id: id, name: name, path: path, link: link})
-            if (index==0) {
-              console.log('pass link')
-              this.editedPost.images[0].name = name
-              this.editedPost.images[0].path = path
-              this.editedPost.images[0].link = link
-              this.editedPost.images[0].id = id
+        // dbx.sharingCreateSharedLink({
+        //     path: path,
+        //     short_url: false
+        //   })
+        //   .then((data) => {
+        //     let link = ''
+        //     link = data.url.replace("?dl=0", "?raw=1")
+        //     // this.editedPost.images.push({id: id, name: name, path: path, link: link})
+        //     if (index==0) {
+        //       console.log('pass link')
+        //       this.editedPost.images[0].name = name
+        //       this.editedPost.images[0].path = path
+        //       this.editedPost.images[0].link = link
+        //       this.editedPost.images[0].id = id
 
-            } else {
-              this.editedPost.images[index].id = id
-              this.editedPost.images[index].name = name
-              this.editedPost.images[index].link = link
-              this.editedPost.images[index].path = path
-            }
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+        //     } else {
+        //       this.editedPost.images[index].id = id
+        //       this.editedPost.images[index].name = name
+        //       this.editedPost.images[index].link = link
+        //       this.editedPost.images[index].path = path
+        //     }
+        //   })
+        //   .catch((err) => {
+        //     console.log(err)
+        //   })
       },
       onFileSelected(event) {
         this.selectedFile = event.target.files[0];
@@ -119,6 +119,21 @@ import dbx from '~/modules/dbx.js'
       },
       onUpload(index) {
         if (this.selectedFile != null) {
+          // var url = `https://api.cloudinary.com/v1_1/dbvr2x9fa/upload`;
+          // var fd = new FormData();
+          // fd.append("upload_preset", "ym2auxgs");
+          // fd.append("tags", "browser_upload"); // Optional - add tag for image admin in Cloudinary
+          // fd.append("file", this.selectedFile);
+          // const config = {
+          //   headers: { "X-Requested-With": "XMLHttpRequest" },
+          // };
+          // this.$axios.post(url,fd,config)
+          //   .then(function (res) {
+          //     console.log(res.data)
+          //   })
+          //   .catch(function (err) {
+          //     console.log(err)
+          //   });
           dbx.filesUpload({
               contents: this.selectedFile,
               path: '/' + this.fileName,

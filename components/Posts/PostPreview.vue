@@ -2,18 +2,16 @@
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview" :class="{adminPost: isAdmin}">
     <article>
       <div class="ratio">
-
         <img v-lazy="thumbnail" alt="" class="ratio__content">
         <div class="post-text">
           <h1  v-if="isAdmin">{{title}}</h1>
-
           <h1 class="post-title" v-else>{{title}}</h1>
         </div>
 
       </div>
     </article>
   </nuxt-link>
-</template>
+</template> 
 
 
 <script>
@@ -101,11 +99,14 @@ a {
   }
   .post-preview {
     width: calc(50% - 20px);
-  margin-bottom: 0px;
+    margin-bottom: 0px;
     
   }
   .post-completed {
     float: right !important;
+  }
+  .post-title{
+    font-size: 16px;
   }
 }
 
@@ -155,8 +156,8 @@ a {
 }
 
 .ratio:hover .post-text {
-  transform: translateY(0);
-  transition-duration: .8s;
+  /* transform: translateY(0); */
+  /* transition-duration: .8s; */
   opacity: 1;
 }
 .post-title{
@@ -177,7 +178,7 @@ a:active .post-content {
   /* max-width: 800px; */
   /* max-height: 56.25%; */
   overflow: hidden;
-  margin: 0 auto;
+  margin: 10px;
   z-index: 2;
   /* width: 50%; */
   

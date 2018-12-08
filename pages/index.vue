@@ -3,10 +3,9 @@
     <section id="intro">
       <div id="intro-text">
         <!-- <h1 class="title">Hello There!</h1> -->
-        <h1 class="subtitle"><span>Front-End developer</span> from NYC building digital experiences</h1>
+        <h1 class="subtitle">Front-End developerfrom NYC building digital experiences</h1>
         <div class="social-media"><SocialMedia /></div>
         <br>
-      <!-- <a  class="" href="#work"><p class="subtitle">See Work</p></a> -->
         
 
       </div>
@@ -56,8 +55,6 @@ export default {
   max-height: 747px;
   width: 100%;
   margin: 0 20px;
-  
-
 }
 
 #intro-text{
