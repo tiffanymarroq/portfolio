@@ -83,13 +83,13 @@ body, html{
   .fade-enter-active, .fade-leave-active {
     /* transition: opacity .5s; */
     opacity: 1;
-    transform: translate(0, 0);
+    // transform: translate(0, 0);
     transition-duration: 1s;
   }
   .fade-enter, .fade-leave-to  {
     /* opacity: 0; */
     opacity: 0;
-    transform: translate(0, 2em);
+    // transform: translate(0, 2em);
     transition-duration: 1s;
   }
   .title{

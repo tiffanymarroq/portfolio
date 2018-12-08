@@ -8,16 +8,25 @@ const createStore = () => {
         state:{
             loadedPosts:[],
             token: null,
-            id: ''
+            id: '',
+            length: null
         },
         mutations:{
             setPosts(state, posts) {
-                state.loadedPosts = posts
+                let postPosition = [];
+                postPosition.length = posts.length;
+                let newArr = posts.map(post=>{
+                    if(post.position == 1){
+                        postPosition[0] = post
+                    }
+                    postPosition[post.position - 1] = post;
+                    return postPosition;
+                })
+                state.length = postPosition.length;
+                state.loadedPosts = postPosition;
             },
             addPost(state, post){
-                state.loadedPosts.push(post)
-                console.log('add');
-                
+                state.loadedPosts.push(post)                
             },
             editPost(state, editedPost){
                 const postIndex = state.loadedPosts.findIndex(

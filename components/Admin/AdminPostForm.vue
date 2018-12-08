@@ -5,6 +5,8 @@
                 <AppControlInput v-model="editedPost.tags">Tags</AppControlInput>
                 <AppControlInput v-model="editedPost.url">Site Url</AppControlInput>
                 <AppControlInput v-model="editedPost.completed">Date Completed</AppControlInput>     
+                <AppControlInput v-model="editedPost.position">Position</AppControlInput>     
+                
                 <h1>Thumbnail</h1>
                 {{editedPost.images[0].name}}
                 <input
@@ -71,7 +73,8 @@ import dbx from '~/modules/dbx.js'
             id: ''
           }],
           url:"",
-          completed:""
+          completed:"",
+          position: null
         }
       }
     },
@@ -122,8 +125,8 @@ import dbx from '~/modules/dbx.js'
             });
         }
       },
+
       onRemove(index) {
- 
         if (index === 0) {
           console.log(index + ' in')
           this.selectedFile = ''

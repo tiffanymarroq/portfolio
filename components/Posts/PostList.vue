@@ -1,8 +1,8 @@
 <template>
+    
      <section class="large-container post-list">
       <PostPreview
-     
-        v-for="post in posts.slice().reverse()"
+        v-for="post in posts"
         :key="post.id"
         :id="post.id" 
         :is-admin="isAdmin" 
@@ -11,7 +11,7 @@
         :previewText="post.previewText" 
         :dateCompleted="post.completed"
       />
-      
+
     </section>
 </template>
 <script>
@@ -29,7 +29,7 @@ export default {
             type: Array,
             required: true
         }
-    }   
+    },   
 }
 </script>
 <style scoped>
@@ -40,6 +40,9 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+button:hover{
+    background: #444;
 }
 
 </style>
