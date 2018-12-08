@@ -1,17 +1,13 @@
 <template>
   <nuxt-link :to="{name: postLink, params:{  postTitle: convertTitle, postID: id }}" class="post-preview" :class="{adminPost: isAdmin}">
     <article>
-              <div class="post-heading">
-          <!-- <h1 v-show="isAdmin==false" class="post-title">{{title}}</h1> -->
-          <!-- <h1 v-show="isAdmin==false" class="post-completed">{{dateCompleted}}</h1> -->
-        </div>
       <div class="ratio">
 
         <img v-lazy="thumbnail" alt="" class="ratio__content">
         <div class="post-text">
           <h1  v-if="isAdmin">{{title}}</h1>
 
-          <p v-else>{{previewText}}</p>
+          <h1 class="post-title" v-else>{{title}}</h1>
         </div>
 
       </div>
@@ -72,8 +68,9 @@ export default {
 .post-preview {
   background-color: white;
   width: 100%;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   cursor: pointer;
+  margin-bottom: 20px;
 }
 
 a {
@@ -103,7 +100,9 @@ a {
     margin: 10px;
   }
   .post-preview {
-    width: 65%;
+    width: calc(50% - 20px);
+  margin-bottom: 0px;
+    
   }
   .post-completed {
     float: right !important;
@@ -140,21 +139,29 @@ a {
   /* opacity: 0; */
   position: absolute;
   bottom: 0;
-  text-align: left;
+  text-align: center;
   padding-left: 20px;
   width: 100%;
-  /* height: 40px; */
+  height: 100%;
   background: rgba(0, 0, 0, .7);
   color: #fff;
-  transform: translateY(120px);
+  /* transform: translateY(120px); */
   transition-duration: .8s;
+  opacity: 0;
+}
+.post-text h1 {
+  margin-top: 25%;
+  margin-left: -10%;
 }
 
 .ratio:hover .post-text {
   transform: translateY(0);
   transition-duration: .8s;
+  opacity: 1;
 }
-
+.post-title{
+  font-size: 26px;
+}
 a:hover .post-content,
 a:active .post-content {
   background-color: #ccc;
@@ -172,6 +179,8 @@ a:active .post-content {
   overflow: hidden;
   margin: 0 auto;
   z-index: 2;
+  /* width: 50%; */
+  
 }
 
 .ratio__content {
@@ -180,7 +189,7 @@ a:active .post-content {
   max-width: initial;
   position: absolute;
   top: 0px;
-  left: 0;
+  left: 0px;
   /* width: 100%; */
   /* height: 100%; */
 }
@@ -188,7 +197,7 @@ a:active .post-content {
 .ratio:before {
   content: '';
   display: block;
-  width: 100%;
+  /* width: 50%; */
   padding-bottom: 56.25%;
   background: rgba(0, 0, 0, .3);
 }

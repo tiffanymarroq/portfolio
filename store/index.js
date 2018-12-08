@@ -191,6 +191,9 @@ const createStore = () => {
             loadedPosts(state) {
                 return state.loadedPosts;
             },
+            getLength(state){
+                return state.length;
+            },
             isAuthenticated(state){
                 return state.token != null;
             },

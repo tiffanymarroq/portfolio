@@ -6,8 +6,8 @@
       <nuxt-link to="/"><span class="logo">Tiffany Marroquin</span></nuxt-link>
     </div>
     <div class="spacer"></div>
-    <div class="navigation-items">
-      <ul class="nav-list">
+    <div class="navigation-items ">
+      <ul class="nav-list ">
         <li class="nav-item"><nuxt-link to="/">Projects</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
       </ul>
@@ -89,9 +89,10 @@ export default {
   text-transform: uppercase;
 }
 
-/* .nav-item a:hover,
+.nav-item a:hover,
 .nav-item a:active,
-.nav-item a.nuxt-link-active {
-  color: red;
-} */
+.nav-item a.nuxt-link-exact-active {
+  color: #000;
+}
+
 </style>

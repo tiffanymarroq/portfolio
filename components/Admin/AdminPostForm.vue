@@ -6,7 +6,6 @@
                 <AppControlInput v-model="editedPost.url">Site Url</AppControlInput>
                 <AppControlInput v-model="editedPost.completed">Date Completed</AppControlInput>     
                 <AppControlInput v-model="editedPost.position">Position</AppControlInput>     
-                
                 <h1>Thumbnail</h1>
                 {{editedPost.images[0].name}}
                 <input
@@ -26,7 +25,6 @@
                 <h1>Images</h1>
                 <div v-for="(img, index) in editedPost.images" v-if="index >= 1" :key ="index">
                   {{img.name}}
- 
                   <input  type="file" v-bind="$attrs"
                     @change = "onFileSelected" 
                     v-show = "img.name == ''">
@@ -78,6 +76,15 @@ import dbx from '~/modules/dbx.js'
         }
       }
     },
+    filter:{
+      postPosition(){
+        let length = this.$store.getters.getLength;
+        if(this.editedPost.position == null){
+          this.editedPost.position = length;
+        }
+        return this.editedPost.position;
+      },
+    },
     methods: {
       addTo(id, name, path, index) {
         dbx.sharingCreateSharedLink({
@@ -125,7 +132,7 @@ import dbx from '~/modules/dbx.js'
             });
         }
       },
-
+      
       onRemove(index) {
         if (index === 0) {
           console.log(index + ' in')
