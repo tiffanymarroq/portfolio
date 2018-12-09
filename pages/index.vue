@@ -3,7 +3,7 @@
     <section id="intro">
       <div id="intro-text">
         <!-- <h1 class="title">Hello There!</h1> -->
-        <h1 class="subtitle">Front-End developerfrom NYC building digital experiences</h1>
+        <h1 class="subtitle">Front-End developer from NYC building digital experiences</h1>
         <div class="social-media"><SocialMedia /></div>
         <br>
         
