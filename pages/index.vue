@@ -6,8 +6,6 @@
         <h1 class="subtitle">Front-End developer from NYC building digital experiences</h1>
         <div class="social-media"><SocialMedia /></div>
         <br>
-        
-
       </div>
     </section>
     <div id="work">
@@ -89,7 +87,6 @@ export default {
     margin: 0;
   }
 }
-
 .subtitle {
   color: #333;
   text-align: center;
