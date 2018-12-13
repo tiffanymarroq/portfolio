@@ -11,7 +11,7 @@
                 <li>3. Select Category type from Products Category List</li>
                 <li>4. Scroll down: Add Product Photos</li>
                 <li>5. Add text in Short Description</li>
-                <li>6. After you're down, click public!</li>
+                <li>6. After you're done, click public!</li>
             </ul>
 
 
@@ -23,7 +23,7 @@
                 <li>3. Select Category type from Categories List</li>
                 <li>4. Add  Photos</li>
                 <li>5. Add text in main text area</li>
-                <li>6. After you're down, click public!</li>
+                <li>6. After you're done, click public!</li>
             </ul>
                 <div class="iframe">
                      <iframe 
