@@ -78,7 +78,6 @@ module.exports = {
     fbAPIKey: key.firebase.apiKey,
     dbAPIKey: key.dropbox.accessToken,
     databaseURL: key.firebase.databaseURL,
-    cloudLink: key.cloudiary.link
   },
   transition: {
     name: 'fade',
